@@ -172,9 +172,9 @@ CREATE TABLE TaiKhoan(
 	ma varchar(10)  unique,
 	idNguoiDung uniqueidentifier  ,
 	userName varchar(20)  ,
-	passWord varchar(20)  ,
+	passWord nvarchar(100)  ,
 	createdDate date  ,
-	updateDate date ,
+	updatedDate date ,
 	deleted bit default 0
 )
 go
