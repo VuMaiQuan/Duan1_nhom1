@@ -13,7 +13,7 @@ import RavenLogin.login2.Login;
 public class tesst {
 
     public static void main(String[] args) {
-        Login lg = new Login();
+        System.out.println("a");
     }
 
 }

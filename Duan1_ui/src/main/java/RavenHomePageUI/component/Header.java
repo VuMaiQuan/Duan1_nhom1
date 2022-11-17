@@ -19,12 +19,12 @@ public class Header extends javax.swing.JPanel {
         setOpaque(false);
         s = HibernateUtil.getFactory().openSession();
         l = new Login();
+        if (l.ndLogin != null) {
+            txtChucVu.setText(l.ndLogin.isChucvu() ? "Quản lí" : "Nhân viên");
+            txtten.setText(l.ndLogin.getHoten());
+            System.out.println(l.ndLogin);
+        }
 
-        txtChucVu.setText(l.ndLogin.isChucvu() ? "Quản lí" : "Nhân viên");
-        txtten.setText(l.ndLogin.getHoten());
-        
-
-        System.out.println(l.ndLogin);
     }
 
     @Override

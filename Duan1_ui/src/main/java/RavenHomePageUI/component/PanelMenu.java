@@ -1,5 +1,6 @@
 package RavenHomePageUI.component;
 
+import CodeMain.domainModel.NguoiDung;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import RavenHomePageUI.event.EventMenu;
 import RavenHomePageUI.swing.Button;
+import RavenLogin.login2.Login;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -29,7 +31,9 @@ public class PanelMenu extends JComponent {
         this.animate = animate;
         repaint();
     }
-    boolean role = true;
+
+    Login lg;
+
     private float animate;
     private final List<EventMenu> events = new ArrayList<>();
 
@@ -39,22 +43,28 @@ public class PanelMenu extends JComponent {
         panelMenu.setOpaque(false);
         panelMenu.setLayout(new MigLayout("wrap", "[fill]", "0[]0"));
         add(panelMenu);
-
-        if (role) {
-            addMenu("Bán Hàng");
-            addMenu("Quản lí sản phẩm");
-            addMenu("Quản lí nhân viên");
-            addMenu("Quản lí khách hàng");
-            addMenu("Voucher");
-            addMenu("Đổi sản phẩm");
-            addMenu("Đăng xuất");
-            addMenu("Thoát");
-        } else {
-            addMenu("Bán Hàng");
-            addMenu("Đổi sản phẩm");
-            addMenu("Đăng xuất");
-            addMenu("Thoát");
+        lg = new Login();
+        boolean role;
+        NguoiDung nd = lg.ndLogin;
+        if (nd != null) {
+            role = nd.isChucvu();
+            if (role) {
+                addMenu("Bán Hàng");
+                addMenu("Quản lí sản phẩm");
+                addMenu("Quản lí nhân viên");
+                addMenu("Quản lí khách hàng");
+                addMenu("Voucher");
+                addMenu("Đổi sản phẩm");
+                addMenu("Đăng xuất");
+                addMenu("Thoát");
+            } else {
+                addMenu("Bán Hàng");
+                addMenu("Đổi sản phẩm");
+                addMenu("Đăng xuất");
+                addMenu("Thoát");
+            }
         }
+
     }
 
     private void addMenu(String menuName) {

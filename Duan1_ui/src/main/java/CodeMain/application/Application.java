@@ -41,7 +41,7 @@ public class Application {
 
     public static void main(String[] args) {
         //0 la login , 1 la homepage
-        int i = 0;
+        int i = 1;
 
         Application a = new Application();
         a.RUnn(i);

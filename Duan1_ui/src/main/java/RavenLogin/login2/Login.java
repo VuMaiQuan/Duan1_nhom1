@@ -8,8 +8,6 @@ import RavenLogin.swing2.EventLogin;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 public class Login extends PanelCustom {
 

@@ -24,7 +24,7 @@ public class LayerForm extends JLayeredPane {
 
     private boolean showing;
     private float animate;
-    ImageIcon iconList = new ImageIcon("D:\\Duan1\\icon\\64lit.png\\");
+    ImageIcon iconList = new ImageIcon("D:\\Duan1\\icon\\64lit.png\\");//sua file
     ImageIcon iconX = new ImageIcon("D:\\Duan1\\icon\\X64.png\\");
 
     public void loadLoginUI() {
@@ -74,34 +74,34 @@ public class LayerForm extends JLayeredPane {
                             form.showForm(new FrmBanHang());
                             setVisibleMenu(false);
                             break;
-                        case 1:
-                            form.showForm(new FrmBanHang());
-                            setVisibleMenu(false);
-                            break;
-                        case 2:
-                            form.showForm(new FrmHoaDon());
-                            setVisibleMenu(false);
-                            break;
-                        case 3:
-                            form.showForm(new FrmKhuyenMai());
-                            setVisibleMenu(false);
-                            break;
-                        case 4:
-                            form.showForm(new FrmBanHang());
-                            setVisibleMenu(false);
-                            break;
-                        case 5:
-                            form.showForm(new FrmBanHang());
-                            setVisibleMenu(false);
-                            break;
-                        case 6:
-                            form.showForm(new FrmBanHang());
-                            setVisibleMenu(false);
-                            break;
-                        case 7:
-                            form.showForm(new FrmBanHang());
-                            setVisibleMenu(false);
-                            break;
+//                        case 1:
+//                            form.showForm(new FrmBanHang());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 2:
+//                            form.showForm(new FrmHoaDon());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 3:
+//                            form.showForm(new FrmKhuyenMai());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 4:
+//                            form.showForm(new FrmBanHang());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 5:
+//                            form.showForm(new FrmBanHang());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 6:
+//                            form.showForm(new FrmBanHang());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 7:
+//                            form.showForm(new FrmBanHang());
+//                            setVisibleMenu(false);
+//                            break;
                         default:
                             throw new AssertionError();
                     }
@@ -111,14 +111,14 @@ public class LayerForm extends JLayeredPane {
                             form.showForm(new FrmBanHang());
                             setVisibleMenu(false);
                             break;
-                        case 1:
-                            form.showForm(new FrmBanHang());
-                            setVisibleMenu(false);
-                            break;
-                        case 2:
-                            loadLoginUI();
-
-                            break;
+//                        case 1:
+//                            form.showForm(new FrmBanHang());
+//                            setVisibleMenu(false);
+//                            break;
+//                        case 2:
+//                            loadLoginUI();
+//
+//                            break;
                         case 3:
                             System.exit(0);
                             break;
@@ -160,7 +160,7 @@ public class LayerForm extends JLayeredPane {
         animator.setResolution(0);
         animator.setAcceleration(.5f);
         animator.setDeceleration(.5f);
-        //form.showForm(new Test_Form("Init form"));
+       // form.showForm(new Test_Form("Init form"));
     }
 
     private void startAnimator(boolean showing) {
