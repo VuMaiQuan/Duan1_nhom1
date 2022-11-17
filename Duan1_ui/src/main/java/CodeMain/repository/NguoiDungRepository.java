@@ -45,9 +45,8 @@ public class NguoiDungRepository {
 
     public static void main(String[] args) {
         NguoiDungRepository nd = new NguoiDungRepository();
-//        for (var x : nd.getList()) {
-//            System.out.println(x);
-//        }
-System.out.println(nd.getOneND("533BA65B-E067-47C8-8863-6089325498F6"));
+        for (var x : nd.getList()) {
+            System.out.println(x);
+        }
     }
 }

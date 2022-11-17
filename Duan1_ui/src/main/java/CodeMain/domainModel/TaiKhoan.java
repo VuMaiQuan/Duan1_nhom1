@@ -1,6 +1,7 @@
 package CodeMain.domainModel;
 
-
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author hungs
  */
 @Entity
-@Table(name = "accounts")
+@Table(name = "TaiKhoan")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,17 +32,23 @@ public class TaiKhoan {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id")
     private String id;
 
+    private String ma;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "idNguoiDung")
     private NguoiDung nguoiDung;
 
     private String userName;
 
-    private String password;
+    private String passWord;
+    
+    private Date createdDate;
+    
+    private Date updatedDate;
 
     private boolean deleted;
 
-    
 }

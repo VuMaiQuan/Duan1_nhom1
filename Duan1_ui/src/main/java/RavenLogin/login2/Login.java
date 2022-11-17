@@ -1,6 +1,5 @@
 package RavenLogin.login2;
 
-import CodeMain.Utilities.HibernateUtil;
 import CodeMain.domainModel.NguoiDung;
 import CodeMain.domainModel.TaiKhoan;
 import CodeMain.repository.TaiKhoanRepository;
@@ -40,7 +39,7 @@ public class Login extends PanelCustom {
     public NguoiDung checkLogin(String user, String pass) {
         NguoiDung nd = null;
         for (TaiKhoan x : list_tk) {
-            if (user.equals(x.getUserName()) && pass.equals(x.getPassword())) {
+            if (user.equals(x.getUserName()) && pass.equals(x.getPassWord())) {
                 nd = x.getNguoiDung();
                 return nd;
             }

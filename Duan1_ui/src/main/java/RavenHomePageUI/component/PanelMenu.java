@@ -47,7 +47,7 @@ public class PanelMenu extends JComponent {
         boolean role;
         NguoiDung nd = lg.ndLogin;
         if (nd != null) {
-            role = nd.isChucvu();
+            role = nd.isChucVu();
             if (role) {
                 addMenu("Bán Hàng");
                 addMenu("Quản lí sản phẩm");

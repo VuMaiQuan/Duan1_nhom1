@@ -1,5 +1,6 @@
 package RavenHomePageUI.component;
 
+import CodeMain.view.Form_chucNang.FRMThongKe;
 import CodeMain.view.Form_chucNang.FrmBanHang;
 import CodeMain.view.Form_chucNang.FrmHoaDon;
 import CodeMain.view.Form_chucNang.FrmKhuyenMai;
@@ -74,34 +75,34 @@ public class LayerForm extends JLayeredPane {
                             form.showForm(new FrmBanHang());
                             setVisibleMenu(false);
                             break;
-//                        case 1:
-//                            form.showForm(new FrmBanHang());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 2:
-//                            form.showForm(new FrmHoaDon());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 3:
-//                            form.showForm(new FrmKhuyenMai());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 4:
-//                            form.showForm(new FrmBanHang());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 5:
-//                            form.showForm(new FrmBanHang());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 6:
-//                            form.showForm(new FrmBanHang());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 7:
-//                            form.showForm(new FrmBanHang());
-//                            setVisibleMenu(false);
-//                            break;
+                        case 1:
+                            form.showForm(new FrmHoaDon());
+                            setVisibleMenu(false);
+                            break;
+                        case 2:
+                            form.showForm(new FrmKhuyenMai());
+                            setVisibleMenu(false);
+                            break;
+                        case 3:
+                            form.showForm(new FRMThongKe());
+                            setVisibleMenu(false);
+                            break;
+                        case 4:
+                            form.showForm(new FrmBanHang());
+                            setVisibleMenu(false);
+                            break;
+                        case 5:
+                            form.showForm(new FrmBanHang());
+                            setVisibleMenu(false);
+                            break;
+                        case 6:
+                            form.showForm(new FrmBanHang());
+                            setVisibleMenu(false);
+                            break;
+                        case 7:
+                            form.showForm(new FrmBanHang());
+                            setVisibleMenu(false);
+                            break;
                         default:
                             throw new AssertionError();
                     }
@@ -111,14 +112,14 @@ public class LayerForm extends JLayeredPane {
                             form.showForm(new FrmBanHang());
                             setVisibleMenu(false);
                             break;
-//                        case 1:
-//                            form.showForm(new FrmBanHang());
-//                            setVisibleMenu(false);
-//                            break;
-//                        case 2:
-//                            loadLoginUI();
-//
-//                            break;
+                        case 1:
+                            form.showForm(new FrmBanHang());
+                            setVisibleMenu(false);
+                            break;
+                        case 2:
+                            loadLoginUI();
+
+                            break;
                         case 3:
                             System.exit(0);
                             break;

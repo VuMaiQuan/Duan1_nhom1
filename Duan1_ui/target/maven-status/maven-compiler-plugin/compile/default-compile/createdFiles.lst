@@ -15,6 +15,7 @@ RavenLogin\main\MainLogin$1.class
 CodeMain\application\Application.class
 CodeMain\domainModel\MauSac.class
 RavenHomePageUI\swing\Button$1.class
+CodeMain\view\Form_chucNang\FRMThongKe.class
 RavenHomePageUI\component\LayerForm.class
 CodeMain\repository\NguoiDungRepository.class
 CodeMain\domainModel\MatKinh.class

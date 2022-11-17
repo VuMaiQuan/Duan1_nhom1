@@ -13,7 +13,7 @@ public class HibernateUtil {
 
     public static final SessionFactory Factory;
     public static String url = "localhost:1433";
-    public static String dbname = "";
+    public static String dbname = "DUAN1_DONGHO";
     public static String user = "hung";
     public static String pass = "123";
 
