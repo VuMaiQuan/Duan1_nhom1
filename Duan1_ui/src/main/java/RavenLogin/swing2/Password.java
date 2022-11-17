@@ -9,7 +9,7 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import RavenLogin.login2.LoginAndForgetPass;
+import RavenLogin.login.LoginAndForgetPass;
 
 public class Password extends JPasswordField {
 

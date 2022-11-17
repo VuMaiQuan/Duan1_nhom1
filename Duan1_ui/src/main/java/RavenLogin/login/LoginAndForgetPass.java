@@ -1,4 +1,4 @@
-package RavenLogin.login2;
+package RavenLogin.login;
 
 import java.awt.Color;
 import java.awt.Component;

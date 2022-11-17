@@ -1,7 +1,7 @@
 package RavenHomePageUI.component;
 
 import CodeMain.Utilities.HibernateUtil;
-import RavenLogin.login2.Login;
+import RavenLogin.login.Login;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;

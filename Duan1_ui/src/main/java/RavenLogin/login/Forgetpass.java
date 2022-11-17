@@ -1,6 +1,6 @@
-package RavenLogin.login2;
+package RavenLogin.login;
 
-import RavenLogin.login2.PanelCustom;
+import RavenLogin.login.PanelCustom;
 
 
 public class Forgetpass extends PanelCustom {

@@ -1,6 +1,6 @@
 package RavenLogin.main;
 
-import RavenLogin.login2.Login;
+import RavenLogin.login.Login;
 import RavenLogin.swing2.EventLogin;
 
 /**
@@ -47,7 +47,7 @@ public class MainLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         main = new javax.swing.JPanel();
-        loginAndRegister1 = new RavenLogin.login2.LoginAndForgetPass();
+        loginAndRegister1 = new RavenLogin.login.LoginAndForgetPass();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,7 +106,7 @@ public class MainLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private RavenLogin.login2.LoginAndForgetPass loginAndRegister1;
+    private RavenLogin.login.LoginAndForgetPass loginAndRegister1;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,13 +8,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import org.hibernate.Session;
 
-/**
- *
- * @author hungs
- */
 public class TaiKhoanRepository {
-
-  
 
     public List<TaiKhoan> getList() {
         List<TaiKhoan> list = new ArrayList<>();
@@ -27,8 +21,7 @@ public class TaiKhoanRepository {
             return null;
         }
     }
-    
-    
+
     
 
     public static void main(String[] args) {

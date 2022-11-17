@@ -19,14 +19,13 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class LayerForm extends JLayeredPane {
-
-    //role
-    boolean role = true;
-
+    String srcList  ="D:\\\\Duan1\\\\icon\\\\64lit.png\\\\";
+    String srcClose  ="D:\\Duan1\\icon\\X64.png\\";
+    
     private boolean showing;
     private float animate;
-    ImageIcon iconList = new ImageIcon("D:\\Duan1\\icon\\64lit.png\\");//sua file
-    ImageIcon iconX = new ImageIcon("D:\\Duan1\\icon\\X64.png\\");
+    ImageIcon iconList = new ImageIcon(srcList);//sua file
+    ImageIcon iconX = new ImageIcon(srcClose);
 
     public void loadLoginUI() {
         /* Set the Nimbus look and feel */
@@ -60,7 +59,8 @@ public class LayerForm extends JLayeredPane {
     }
 
     public LayerForm() {
-
+        //Quyền
+        boolean role = true;
         setBackground(new Color(242, 242, 242));
         layout = new MigLayout("fill,inset 3", "[fill]", "[fill]");
         setLayout(layout);
@@ -161,7 +161,7 @@ public class LayerForm extends JLayeredPane {
         animator.setResolution(0);
         animator.setAcceleration(.5f);
         animator.setDeceleration(.5f);
-       // form.showForm(new Test_Form("Init form"));
+        // form.showForm(new Test_Form("Init form"));
     }
 
     private void startAnimator(boolean showing) {

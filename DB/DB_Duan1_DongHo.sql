@@ -128,7 +128,7 @@ create table HoaDon(
 )
 
 GO
---khách hàng
+--khach hang
 CREATE TABLE KhachHang(
 	id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 	ma varchar(10)  unique,
@@ -231,5 +231,3 @@ ALTER TABLE TaiKhoan ADD FOREIGN KEY (idNguoiDung) REFERENCES NguoiDung(id)
 --bảo hành 
 ALTER TABLE BaoHanh ADD FOREIGN KEY (idHDCT) REFERENCES HDCT(id)
 
-alter table hdct drop constraint FK__HDCT__idCTSP__778AC167
-alter table hdct drop constraint FK__HDCT__idCTSP__75A278F5

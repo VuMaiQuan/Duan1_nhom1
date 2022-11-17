@@ -1,9 +1,10 @@
-package RavenLogin.login2;
+package RavenLogin.login;
 
 import CodeMain.domainModel.NguoiDung;
 import CodeMain.domainModel.TaiKhoan;
 import CodeMain.repository.TaiKhoanRepository;
 import RavenLogin.swing2.EventLogin;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,16 +25,25 @@ public class Login extends PanelCustom {
     public void setEventLogin(EventLogin event) {
         this.event = event;
     }
-
+//code login -----------------
     public boolean checkValidate() {
-        if (txtUserName.getText().trim().length() == 0) {
+        if (txtUserName.getText().trim().length() == 0&&txtPassWord.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Không được để trống userName và PassWord");
             return false;
+        }else if(txtUserName.getText().trim().length() == 0){
+             JOptionPane.showMessageDialog(this, "Không được để trống userName");
+             txtUserName.grabFocus();
+             return false;
+        }else if(txtPassWord.getText().trim().length() == 0){
+             JOptionPane.showMessageDialog(this, "Không được để trống PassWord");
+             txtPassWord.grabFocus();
+             return false;
+        }else{
+            checkLogin(txtUserName.getText(), txtPassWord.getText());
+            return true;
         }
-        if (txtPassWord.getText().trim().length() == 0) {
-            return false;
-        }
-        return true;
     }
+    
     public static NguoiDung ndLogin = null;
 
     public NguoiDung checkLogin(String user, String pass) {
@@ -46,7 +56,9 @@ public class Login extends PanelCustom {
         }
         return null;
     }
-
+// đóng code login -----------------
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,10 +164,8 @@ public class Login extends PanelCustom {
             if (ndLogin != null) {
                 event.loginDone();
             } else {
-                JOptionPane.showMessageDialog(this, "Sai tài khoản mk");
+                JOptionPane.showMessageDialog(this, "Sai tài khoản hoặc mk");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "không được để trống");
         }
 
 //        if (getAlpha() == 0) {
