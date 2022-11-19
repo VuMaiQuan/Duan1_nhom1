@@ -1,6 +1,10 @@
 package RavenHomePageUI.component;
 
+import CodeMain.view.Form_chucNang.FRMQLKhachHang;
+import CodeMain.view.Form_chucNang.FRMQLNhanVien;
+import CodeMain.view.Form_chucNang.FRMQLSanPham;
 import CodeMain.view.Form_chucNang.FRMThongKe;
+import CodeMain.view.Form_chucNang.FRMThongtincanhan;
 import CodeMain.view.Form_chucNang.FrmBanHang;
 import CodeMain.view.Form_chucNang.FrmHoaDon;
 import CodeMain.view.Form_chucNang.FrmKhuyenMai;
@@ -19,12 +23,18 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 public class LayerForm extends JLayeredPane {
-    String srcList  ="D:\\\\Duan1\\\\icon\\\\64lit.png\\\\";
-    String srcClose  ="D:\\Duan1\\icon\\X64.png\\";
-    
+
+    //String srcList  ="D:\\Duan1\\RunCode\\Duan1_ui\\src\\main\\java\\RavenHomePageUI\\icon\\menu.png";
+    //cách lấy src ảnh tuyệt đối 
+    String src1 = System.getProperty("user.dir");
+    String srcList = src1.concat("\\src\\main\\icon\\menu60.png");
+
+    String srcClose = src1.concat("\\src\\main\\icon\\delete60.png");
+
     private boolean showing;
     private float animate;
     ImageIcon iconList = new ImageIcon(srcList);//sua file
+
     ImageIcon iconX = new ImageIcon(srcClose);
 
     public void loadLoginUI() {
@@ -76,33 +86,43 @@ public class LayerForm extends JLayeredPane {
                             setVisibleMenu(false);
                             break;
                         case 1:
-                            form.showForm(new FrmHoaDon());
+                            form.showForm(new FRMQLSanPham());
                             setVisibleMenu(false);
                             break;
                         case 2:
-                            form.showForm(new FrmKhuyenMai());
+                            form.showForm(new FRMQLNhanVien());
                             setVisibleMenu(false);
                             break;
                         case 3:
-                            form.showForm(new FRMThongKe());
+                            form.showForm(new FRMQLKhachHang());
                             setVisibleMenu(false);
                             break;
                         case 4:
-                            form.showForm(new FrmBanHang());
+                            form.showForm(new FrmHoaDon());
                             setVisibleMenu(false);
                             break;
                         case 5:
-                            form.showForm(new FrmBanHang());
+                            form.showForm(new FrmKhuyenMai());
                             setVisibleMenu(false);
                             break;
                         case 6:
-                            form.showForm(new FrmBanHang());
+                            form.showForm(new FRMThongKe());
                             setVisibleMenu(false);
                             break;
                         case 7:
-                            form.showForm(new FrmBanHang());
+//                            form.showForm(new frm());
+//                            setVisibleMenu(false);
+//                            break;
+                        case 8:
+                            form.showForm(new FRMThongtincanhan());
                             setVisibleMenu(false);
                             break;
+                        case 9:
+                            form.showForm(new FRMThongKe());
+                            setVisibleMenu(false);
+                            break;
+                        case 10:
+                            System.exit(0);
                         default:
                             throw new AssertionError();
                     }
@@ -113,7 +133,7 @@ public class LayerForm extends JLayeredPane {
                             setVisibleMenu(false);
                             break;
                         case 1:
-                            form.showForm(new FrmBanHang());
+                            form.showForm(new FRMQLKhachHang());
                             setVisibleMenu(false);
                             break;
                         case 2:
@@ -145,7 +165,7 @@ public class LayerForm extends JLayeredPane {
             }
         });
         setLayer(buttonMenu, JLayeredPane.POPUP_LAYER);
-        add(buttonMenu, "pos 1al 0al, h 40, w 40", 0);
+        add(buttonMenu, "pos 1al 0al, h 60, w 60", 0);
         //  Init animator
         animator = new Animator(350, new TimingTargetAdapter() {
             @Override

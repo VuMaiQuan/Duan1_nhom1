@@ -53,18 +53,22 @@ public class PanelMenu extends JComponent {
                 addMenu("Quản lí sản phẩm");
                 addMenu("Quản lí nhân viên");
                 addMenu("Quản lí khách hàng");
-                addMenu("Voucher");
+                addMenu("Quản lí Hóa đơn");
+                addMenu("Voucher - Khuyến mãi");
+                addMenu("Thống kê");
                 addMenu("Đổi sản phẩm");
+                addMenu("Thông tin cá nhân");
                 addMenu("Đăng xuất");
                 addMenu("Thoát");
             } else {
                 addMenu("Bán Hàng");
+                addMenu("Quản lí khách hàng");
                 addMenu("Đổi sản phẩm");
+                addMenu("Thông tin cá nhân");
                 addMenu("Đăng xuất");
                 addMenu("Thoát");
             }
         }
-
     }
 
     private void addMenu(String menuName) {

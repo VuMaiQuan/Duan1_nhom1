@@ -1,3 +1,3 @@
-# Duan1_nhom1
+# HungSilver
 
-auto conflict =((((
+select girlFriend from theEarth where age between 18 and 20

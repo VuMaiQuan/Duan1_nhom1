@@ -4,9 +4,9 @@ import CodeMain.domainModel.NguoiDung;
 import CodeMain.domainModel.TaiKhoan;
 import CodeMain.repository.TaiKhoanRepository;
 import RavenLogin.swing2.EventLogin;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Login extends PanelCustom {
@@ -26,24 +26,25 @@ public class Login extends PanelCustom {
         this.event = event;
     }
 //code login -----------------
+
     public boolean checkValidate() {
-        if (txtUserName.getText().trim().length() == 0&&txtPassWord.getText().trim().length() == 0) {
+        if (txtUserName.getText().trim().length() == 0 && txtPassWord.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(this, "Không được để trống userName và PassWord");
             return false;
-        }else if(txtUserName.getText().trim().length() == 0){
-             JOptionPane.showMessageDialog(this, "Không được để trống userName");
-             txtUserName.grabFocus();
-             return false;
-        }else if(txtPassWord.getText().trim().length() == 0){
-             JOptionPane.showMessageDialog(this, "Không được để trống PassWord");
-             txtPassWord.grabFocus();
-             return false;
-        }else{
+        } else if (txtUserName.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Không được để trống userName");
+            txtUserName.grabFocus();
+            return false;
+        } else if (txtPassWord.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Không được để trống PassWord");
+            txtPassWord.grabFocus();
+            return false;
+        } else {
             checkLogin(txtUserName.getText(), txtPassWord.getText());
             return true;
         }
     }
-    
+
     public static NguoiDung ndLogin = null;
 
     public NguoiDung checkLogin(String user, String pass) {
@@ -57,8 +58,7 @@ public class Login extends PanelCustom {
         return null;
     }
 // đóng code login -----------------
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -100,15 +100,15 @@ public class Login extends PanelCustom {
         jLabel2.setForeground(new java.awt.Color(76, 76, 76));
         jLabel2.setText("Or Sign in with");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("D:\\Duan1\\RunCode\\Duan1_ui\\src\\main\\java\\RavenLogin\\icon\\facebook.png")); // NOI18N
+        jButton1.setIcon(new ImageIcon("src/main/icon/facebook.png"));
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\Duan1\\RunCode\\Duan1_ui\\src\\main\\java\\RavenLogin\\icon\\google-plus.png")); // NOI18N
+        jButton2.setIcon(new ImageIcon("src/main/icon/twitter.png"));
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\Duan1\\RunCode\\Duan1_ui\\src\\main\\java\\RavenLogin\\icon\\twitter.png")); // NOI18N
+        jButton3.setIcon(new ImageIcon("src/main/icon/google-plus.png"));
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 

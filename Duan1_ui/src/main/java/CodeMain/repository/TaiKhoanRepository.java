@@ -1,6 +1,6 @@
 package CodeMain.repository;
 
-import CodeMain.Utilities.HibernateUtil;
+import CodeMain.Config.HibernateUtil;
 import CodeMain.domainModel.NguoiDung;
 import CodeMain.domainModel.TaiKhoan;
 import java.util.ArrayList;

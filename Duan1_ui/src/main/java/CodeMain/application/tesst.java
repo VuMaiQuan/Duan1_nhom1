@@ -4,8 +4,6 @@
  */
 package CodeMain.application;
 
-import RavenLogin.login.Login;
-
 /**
  *
  * @author hungs
@@ -13,7 +11,7 @@ import RavenLogin.login.Login;
 public class tesst {
 
     public static void main(String[] args) {
-        System.out.println("a");
+      
     }
 
 }

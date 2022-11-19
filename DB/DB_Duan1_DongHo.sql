@@ -81,7 +81,6 @@ create table CTSP(
 id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 ma varchar(10) unique,
 idSP uniqueidentifier ,
-tenSPFull nvarchar(100) ,
 idNoiSX uniqueidentifier ,
 idHang uniqueidentifier ,
 idMauSac uniqueidentifier ,
@@ -124,7 +123,7 @@ create table HoaDon(
 	tongTien money  ,
 	createdDate date  ,
 	updatedDate date ,
-	idTrangThai uniqueidentifier  
+	trangThai int  
 )
 
 GO
@@ -159,12 +158,7 @@ CREATE TABLE NguoiDung(
 	updatedDate date ,
 	deleted bit default 0
 )
-go
---trangthai 
-CREATE TABLE TrangThai(
-	id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-	loaiTrangThai nvarchar(30)  
-)
+
 go
 --tai khoan
 CREATE TABLE TaiKhoan(
@@ -224,10 +218,10 @@ ALTER TABLE HDCT ADD FOREIGN KEY (idHD) REFERENCES HoaDon(id)
 ALTER TABLE HoaDon ADD FOREIGN KEY (idND) REFERENCES NguoiDung(id)
 ALTER TABLE HoaDon ADD FOREIGN KEY (idKH) REFERENCES KhachHang(id)
 ALTER TABLE HoaDon ADD FOREIGN KEY (idVoucher) REFERENCES Voucher(id)
-ALTER TABLE HoaDon ADD FOREIGN KEY (idTrangThai) REFERENCES TrangThai(id)
 
 -- tài khoản
 ALTER TABLE TaiKhoan ADD FOREIGN KEY (idNguoiDung) REFERENCES NguoiDung(id)
 --bảo hành 
 ALTER TABLE BaoHanh ADD FOREIGN KEY (idHDCT) REFERENCES HDCT(id)
+
 
