@@ -14,8 +14,8 @@ public class HibernateUtil {
     public static final SessionFactory Factory;
     public static String url = "localhost:1433";
     public static String dbname = "DUAN1_DONGHO";
-    public static String user = "hung";
-    public static String pass = "123";
+    public static String user = "PH25315";
+    public static String pass = "1234";
 
     static {
         Configuration conf = new Configuration();
