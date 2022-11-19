@@ -48,8 +48,7 @@ go
 --imei
 CREATE TABLE Imei(
 id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-ma VARCHAR(20) UNIQUE,
-ten NVARCHAR(30),
+maImei VARCHAR(20) UNIQUE,
 createdDate date ,
 updatedDate date,
 deleted bit default 0
@@ -106,7 +105,7 @@ idHD uniqueidentifier ,
 soLuong int ,
 donGia money default 0,
 trangThai int default 0,
-imei int ,
+imei varchar(20) ,
 createdDate date ,
 updatedDate date ,
 deleted bit default 0 ,
