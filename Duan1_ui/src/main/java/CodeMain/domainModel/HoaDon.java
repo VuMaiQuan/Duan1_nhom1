@@ -25,7 +25,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "HoaDon")
 @Getter
 @Setter
-@ToString
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class HoaDon {
@@ -63,7 +63,13 @@ public class HoaDon {
 
     private int trangThai;
 
-    @OneToMany(mappedBy = "hoaDon")
+    @OneToMany(mappedBy = "hoaDon",fetch = FetchType.LAZY)
     private List<HoaDonCT> ListHDCT = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "HoaDon{" + "id=" + id + ", ma=" + ma + ", nguoiDung=" + nguoiDung + ", khachHang=" + khachHang + ", voucher=" + voucher + ", tongTien=" + tongTien + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", trangThai=" + trangThai + '}';
+    }
+
+    
 }

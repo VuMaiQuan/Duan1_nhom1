@@ -59,4 +59,10 @@ public class KhachHang {
     @OneToMany(mappedBy = "nguoiDung")
     private List<TaiKhoan> listTaiKhoan = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "KhachHang{" + "id=" + id + ", ma=" + ma + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", sdt=" + sdt + ", diaChi=" + diaChi + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+
+    
 }

@@ -3,6 +3,7 @@ package CodeMain.domainModel;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,12 +29,12 @@ public class HoaDonCT {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
-    
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idCTSP")
     private ChiTietSP chiTietSP;
-     
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idHD")
     private HoaDon hoaDon;
 
@@ -47,10 +48,15 @@ public class HoaDonCT {
 
     @Temporal(TemporalType.DATE)
     private Date createdDate;
-    
+
     @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
     private boolean deleted;
+
+    @Override
+    public String toString() {
+        return "HoaDonCT{" + "id=" + id + ", chiTietSP=" + chiTietSP + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", donGia=" + donGia + ", trangThai=" + trangThai + ", imei=" + imei + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
 
 }

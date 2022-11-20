@@ -1,5 +1,6 @@
 package CodeMain.domainModel;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +77,7 @@ public class ChiTietSP {
 
     private String moTa;
 
-    private Double donGia;
+    private BigDecimal donGia;
 
     private int soLuong;
 

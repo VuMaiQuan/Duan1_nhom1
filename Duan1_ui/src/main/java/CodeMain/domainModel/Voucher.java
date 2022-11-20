@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +32,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "Voucher")
 @Getter
 @Setter
-@ToString
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Voucher {
@@ -47,26 +49,36 @@ public class Voucher {
 
     @Column(name = "ten")
     private String ten;
-    
+
     @Column(name = "giamGia")
     private Float giamGia;
-    
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "ngayBD")
     private Date ngayBD;
-    
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "ngayKT")
     private Date ngayKT;
-    
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "createdDate")
     private Date createdDate;
-    
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "updatedDate")
     private Date updatedDate;
-    
+
     @Column(name = "deleted")
     private boolean deleted;
 
-    @OneToMany(mappedBy = "voucher")
+    @OneToMany(mappedBy = "voucher",fetch = FetchType.LAZY)
     private List<HoaDon> listHoaDon = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Voucher{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", giamGia=" + giamGia + ", ngayBD=" + ngayBD + ", ngayKT=" + ngayKT + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+
+    
 }

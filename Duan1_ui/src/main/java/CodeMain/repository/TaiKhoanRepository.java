@@ -4,10 +4,14 @@ import CodeMain.Config.HibernateUtil;
 import CodeMain.domainModel.TaiKhoan;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class TaiKhoanRepository {
+
+    private final Session s = HibernateUtil.getFactory().openSession();
 
     public List<TaiKhoan> getList() {
         List<TaiKhoan> list = new ArrayList<>();
@@ -21,11 +25,41 @@ public class TaiKhoanRepository {
         }
     }
 
+    public void create(TaiKhoan nd) throws Exception {
+        Transaction trans = s.getTransaction();
+        try {
+            trans.begin();
+            s.saveOrUpdate(nd);
+            trans.commit();
+            s.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            trans.rollback();;
+            throw e;
+        }
+    }
+
+    public void delete(String ma) throws Exception {
+        Transaction trans = s.getTransaction();
+        try {
+            trans.begin();
+            Query qr = s.createQuery("delete from TaiKhoan where ma=:ma");
+            qr.setParameter("ma", ma);
+            qr.executeUpdate();
+            trans.commit();
+            s.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            trans.rollback();;
+            throw e;
+        }
+    }
+
     public static void main(String[] args) {
         TaiKhoanRepository tk = new TaiKhoanRepository();
         for (TaiKhoan x : tk.getList()) {
             System.out.println(x);
         }
-         
+
     }
 }
