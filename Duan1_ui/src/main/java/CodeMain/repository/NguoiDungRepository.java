@@ -6,6 +6,7 @@ package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
 import CodeMain.domainModel.NguoiDung;
+import CodeMain.domainModel.TaiKhoan;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -29,11 +30,12 @@ public class NguoiDungRepository {
             s.close();
             return list;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
 
-    public NguoiDung getOneNguoiDung(String ma) throws Exception {
+    public NguoiDung getOneNguoiDung(String ma) {
         NguoiDung nd;
         try {
             Query qr = s.createQuery("from NguoiDung where ma=:ma", NguoiDung.class);
@@ -43,8 +45,7 @@ public class NguoiDungRepository {
             return nd;
         } catch (Exception e) {
             e.printStackTrace();
-            throw e;
-
+            return null;
         }
     }
 
@@ -80,9 +81,15 @@ public class NguoiDungRepository {
 
     public static void main(String[] args) {
         NguoiDungRepository nd = new NguoiDungRepository();
-        for (var x : nd.getList()) {
+//        for (var x : nd.getList()) {
+//            System.out.println(x);
+//        }
+        NguoiDung a = nd.getOneNguoiDung("nd1");
+        List<TaiKhoan> tk = a.getListTaiKhoan();
+        for (TaiKhoan x : tk) {
             System.out.println(x);
-
         }
+
+        //System.out.println(a);
     }
 }

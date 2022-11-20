@@ -1,7 +1,19 @@
 package CodeMain.Config;
 
+import CodeMain.domainModel.ChiTietSP;
+import CodeMain.domainModel.DanhMuc;
+import CodeMain.domainModel.Hang;
+import CodeMain.domainModel.HoaDon;
+import CodeMain.domainModel.HoaDonCT;
+import CodeMain.domainModel.Imei;
+import CodeMain.domainModel.KhachHang;
+import CodeMain.domainModel.MatKinh;
+import CodeMain.domainModel.MauSac;
 import CodeMain.domainModel.NguoiDung;
+import CodeMain.domainModel.NoiSX;
+import CodeMain.domainModel.SanPham;
 import CodeMain.domainModel.TaiKhoan;
+import CodeMain.domainModel.Voucher;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -30,6 +42,18 @@ public class HibernateUtil {
 
         conf.addAnnotatedClass(TaiKhoan.class);
         conf.addAnnotatedClass(NguoiDung.class);
+        conf.addAnnotatedClass(HoaDon.class);
+        conf.addAnnotatedClass(HoaDonCT.class);
+        conf.addAnnotatedClass(ChiTietSP.class);
+        conf.addAnnotatedClass(DanhMuc.class);
+        conf.addAnnotatedClass(Hang.class);
+        conf.addAnnotatedClass(Imei.class);
+        conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(MatKinh.class);
+        conf.addAnnotatedClass(MauSac.class);
+        conf.addAnnotatedClass(NoiSX.class);
+        conf.addAnnotatedClass(SanPham.class);
+        conf.addAnnotatedClass(Voucher.class);
 
         conf.setProperties(props);
         ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(conf.getProperties()).build();

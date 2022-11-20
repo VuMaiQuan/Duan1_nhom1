@@ -4,16 +4,14 @@
  */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,7 +21,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.engine.internal.Cascade;
 
 /**
  *
@@ -44,26 +41,32 @@ public class Voucher {
 
     @Column(name = "id")
     private String id;
-    
-    @Column(name="ma")
+
+    @Column(name = "ma")
     private String ma;
-    
-    @Column(name="ten")
+
+    @Column(name = "ten")
     private String ten;
-    @Column(name="giamGia")
+    
+    @Column(name = "giamGia")
     private Float giamGia;
-    @Column(name="ngayBD")
+    
+    @Column(name = "ngayBD")
     private Date ngayBD;
-    @Column(name="ngayKT")
+    
+    @Column(name = "ngayKT")
     private Date ngayKT;
-    @Column(name="createdDate")
+    
+    @Column(name = "createdDate")
     private Date createdDate;
-    @Column(name="updatedDate")
+    
+    @Column(name = "updatedDate")
     private Date updatedDate;
-    @Column(name="deleted")
+    
+    @Column(name = "deleted")
     private boolean deleted;
-    
-    @OneToMany(mappedBy="voucher")
-    private List<HoaDon>listVoucherHoaDon= new ArrayList<>();
-    
+
+    @OneToMany(mappedBy = "voucher")
+    private List<HoaDon> listHoaDon = new ArrayList<>();
+
 }

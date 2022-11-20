@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CodeMain.domainModel;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,26 +17,37 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author hungs
- */
 @Entity
-@Table(name = "TrangThai")
+@Table(name = "NoiSX")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class TrangThai {
-    
+public class NoiSX {
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "id")
     private String id;
-    @Column(name="loaiTrangThai")
-    private String loaiTrangThai;
-    @OneToMany(mappedBy="trangThai")
-    private List<HoaDon>listTrangThaiHoaDon= new ArrayList<>();
+
+    private String ma;
+
+    private String ten;
+
+    private Date createdDate;
+
+    private Date updatedDate;
+
+    private boolean deleted;
+
+    @OneToMany(mappedBy = "noiSX",fetch = FetchType.LAZY)
+    private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "NoiSX{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+    
+    
 }

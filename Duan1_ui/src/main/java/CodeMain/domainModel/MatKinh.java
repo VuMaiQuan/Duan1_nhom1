@@ -4,7 +4,7 @@
  */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -28,7 +28,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "MatKinh")
 @Getter
 @Setter
-@ToString
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class MatKinh {
@@ -37,12 +37,24 @@ public class MatKinh {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "id")
     private String id;
+    
     private String ma;
+    
     private String ten;
+    
     private  Date createdDate;
+    
     private Date updatedDate;
+    
     private boolean deleted;
     
     @OneToMany(mappedBy="matKinh")
-    private List<ChiTietSP>listMatKinhCTSP= new ArrayList<>();
+    private List<ChiTietSP> ListCTSP= new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "MatKinh{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+    
+    
 }
