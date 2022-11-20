@@ -5,7 +5,7 @@
 package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
-import CodeMain.domainModel.HoaDon;
+import CodeMain.domainModel.Voucher;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -17,14 +17,14 @@ import org.hibernate.Transaction;
  *
  * @author hungs
  */
-public class HoaDonRepository {
+public class VoucherRepository {
 
     private final Session s = HibernateUtil.getFactory().openSession();
 
-    public List<HoaDon> getListAll() {
-        List<HoaDon> list = new ArrayList<>();
+    public List<Voucher> getList() {
+        List<Voucher> list = new ArrayList<>();
         try {
-            TypedQuery<HoaDon> qr = s.createQuery("from HoaDon");
+            TypedQuery<Voucher> qr = s.createQuery("from Voucher");
             list = qr.getResultList();
             s.close();
             return list;
@@ -33,12 +33,12 @@ public class HoaDonRepository {
         }
     }
 
-    public HoaDon getOneHoaDon(String ma) {
-        HoaDon nd;
+    public Voucher getOneVoucher(String ma) {
+        Voucher nd;
         try {
-            Query qr = s.createQuery("from HoaDon where ma=:ma", HoaDon.class);
+            Query qr = s.createQuery("from Voucher where ma=:ma", Voucher.class);
             qr.setParameter("ma", ma);
-            nd = (HoaDon) qr.getSingleResult();
+            nd = (Voucher) qr.getSingleResult();
             s.close();
             return nd;
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class HoaDonRepository {
         }
     }
 
-    public void create(HoaDon nd) throws Exception {
+    public void create(Voucher nd) throws Exception {
         Transaction trans = s.getTransaction();
         try {
             trans.begin();
@@ -56,7 +56,7 @@ public class HoaDonRepository {
             s.close();
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();
+            trans.rollback();;
             throw e;
         }
     }
@@ -65,21 +65,21 @@ public class HoaDonRepository {
         Transaction trans = s.getTransaction();
         try {
             trans.begin();
-            Query qr = s.createQuery("delete from HoaDon where ma=:ma");
+            Query qr = s.createQuery("delete from Voucher where ma=:ma");
             qr.setParameter("ma", ma);
             qr.executeUpdate();
             trans.commit();
             s.close();
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();
+            trans.rollback();;
             throw e;
         }
     }
 
     public static void main(String[] args) {
-        HoaDonRepository hd = new HoaDonRepository();
-        for (var x : hd.getListAll()) {
+        VoucherRepository vc = new VoucherRepository();
+        for (var x : vc.getList()) {
             System.out.println(x);
         }
     }

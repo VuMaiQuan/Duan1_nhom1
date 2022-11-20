@@ -1,0 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package CodeMain.services;
+
+import CodeMain.Response.ViewHoaDonResponse;
+import CodeMain.domainModel.HoaDon;
+import java.util.List;
+
+/**
+ *
+ * @author hungs
+ */
+public interface HoaDonService {
+
+    public List<ViewHoaDonResponse> getListAll();
+
+    public ViewHoaDonResponse getOneObj(String ma);
+
+    public void save(HoaDon hd) throws Exception; 
+
+    public void update(HoaDon hd) throws Exception;
+
+    public void delete(String ma) throws Exception;
+}
