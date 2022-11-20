@@ -4,7 +4,7 @@
  */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,22 +30,35 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "DanhMuc")
 @Getter
 @Setter
-@ToString
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class DanhMuc {
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "id")
     private String id;
+
     private String ma;
+
     private String ten;
-    private  Date createdDate;
+
+    @Temporal(TemporalType.DATE)
+    private Date createdDate;
+
+    @Temporal(TemporalType.DATE)
     private Date updatedDate;
-  
+
     private boolean deleted;
-    
-    @OneToMany(mappedBy="danhMuc")
-    private List<ChiTietSP>listDanhMucCTSP= new ArrayList<>();
+
+    @OneToMany(mappedBy = "danhMuc")
+    private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "DanhMuc{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+
 }

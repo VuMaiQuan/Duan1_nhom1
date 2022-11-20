@@ -7,15 +7,14 @@ package CodeMain.domainModel;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +35,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 public class NguoiDung {
 
+    
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -47,6 +47,9 @@ public class NguoiDung {
 
     private boolean gioiTinh;
 
+    @Temporal(TemporalType.DATE)
+    private Date ngaySinh;
+
     private String diaChi;
 
     private String email;
@@ -57,19 +60,21 @@ public class NguoiDung {
 
     private boolean chucVu;
 
+    @Temporal(TemporalType.DATE)
     private Date createdDate;
 
+    @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
     private boolean deleted;
 
-    @OneToMany(mappedBy = "nguoiDung")
-    private List<TaiKhoan> list_tk = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        return "NguoiDung{" + "id=" + id + ", ma=" + ma + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", email=" + email + ", sdt=" + sdt + ", image=" + image + ", chucVu=" + chucVu + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
-    }
+    @OneToMany(mappedBy = "nguoiDung",fetch = FetchType.EAGER)
+    private List<TaiKhoan> listTaiKhoan = new ArrayList<>();
 
     
+    @Override
+    public String toString() {
+        return "NguoiDung{" + "id=" + id + ", ma=" + ma + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", email=" + email + ", sdt=" + sdt + ", image=" + image + ", chucVu=" + chucVu + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+
 }

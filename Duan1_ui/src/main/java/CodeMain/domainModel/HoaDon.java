@@ -1,19 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +21,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author hungs
- */
 @Entity
 @Table(name = "HoaDon")
 @Getter
@@ -40,15 +36,15 @@ public class HoaDon {
     @Column(name = "id")
     private String id;
 
-    
     private String ma;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="idND")
+    @JoinColumn(name = "idND")
     private NguoiDung nguoiDung;
 
-    @Column(name = "idKH")
-    private String khachHang;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idKH")
+    private KhachHang khachHang;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idVoucher")
@@ -57,14 +53,17 @@ public class HoaDon {
     @Column(name = "tongTien")
     private Double tongTien;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "createdDate")
     private Date createdDate;
-    
+
+    @Temporal(TemporalType.DATE)
     @Column(name = "updatedDate")
     private Date updatedDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idTrangThai")
-    private TrangThai trangThai;
+    private int trangThai;
+
+    @OneToMany(mappedBy = "hoaDon")
+    private List<HoaDonCT> ListHDCT = new ArrayList<>();
 
 }

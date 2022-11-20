@@ -4,15 +4,19 @@
  */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,24 +29,38 @@ import org.hibernate.annotations.GenericGenerator;
  * @author hungs
  */
 @Entity
-@Table(name= "SanPham")
+@Table(name = "SanPham")
 @Getter
 @Setter
-@ToString
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class SanPham{
+
+public class SanPham {
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "id")
     private String id;
+
     private String ma;
+
     private String ten;
-    private  Date createdDate;
+
+    @Temporal(TemporalType.DATE)
+    private Date createdDate;
+
+    @Temporal(TemporalType.DATE)
     private Date updatedDate;
+
     private boolean deleted;
-    
-    @OneToMany(mappedBy="sanPham")
-    private List<ChiTietSP>listSanPhamCTSP= new ArrayList<>();
+
+    @OneToMany(mappedBy = "sanPham", fetch = FetchType.LAZY)
+    private List<ChiTietSP> listSP = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "SanPham{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
 }

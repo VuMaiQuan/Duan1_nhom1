@@ -1,7 +1,6 @@
 package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
-import CodeMain.domainModel.NguoiDung;
 import CodeMain.domainModel.TaiKhoan;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +21,11 @@ public class TaiKhoanRepository {
         }
     }
 
-    
-
     public static void main(String[] args) {
         TaiKhoanRepository tk = new TaiKhoanRepository();
         for (TaiKhoan x : tk.getList()) {
             System.out.println(x);
         }
-
+         
     }
 }

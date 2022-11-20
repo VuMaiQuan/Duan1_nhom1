@@ -29,22 +29,34 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "Hang")
 @Getter
 @Setter
-@ToString
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hang {
-     @Id
+
+    @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "id")
     private String id;
+
     private String ma;
+
     private String ten;
-    private  Date createdDate;
+
+    private Date createdDate;
+
     private Date updatedDate;
+
     private boolean deleted;
-    
-    @OneToMany(mappedBy="hang")
-    private List<ChiTietSP>listHangCTSP= new ArrayList<>();
+
+    @OneToMany(mappedBy = "hang")
+    private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Hang{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+
     
 }

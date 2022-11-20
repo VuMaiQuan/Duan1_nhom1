@@ -28,7 +28,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "MauSac")
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class MauSac {
@@ -50,6 +49,13 @@ public class MauSac {
     private boolean deleted;
 
     @OneToMany(mappedBy = "mauSac")
-    private List<ChiTietSP> listMauSacCTSP = new ArrayList<>();
+    private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "MauSac{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+    
+    
 
 }
