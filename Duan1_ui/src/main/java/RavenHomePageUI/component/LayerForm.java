@@ -71,6 +71,7 @@ public class LayerForm extends JLayeredPane {
     public LayerForm() {
         //Quyền
         boolean role = true;
+        //
         setBackground(new Color(242, 242, 242));
         layout = new MigLayout("fill,inset 3", "[fill]", "[fill]");
         setLayout(layout);

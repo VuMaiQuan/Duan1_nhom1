@@ -44,7 +44,7 @@ public class HoaDon {
     private String ma;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idND")
+    @JoinColumn(name = "idND",nullable = true)
     private NguoiDung nguoiDung;
 
     

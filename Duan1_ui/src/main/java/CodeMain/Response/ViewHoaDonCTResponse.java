@@ -27,7 +27,7 @@ public class ViewHoaDonCTResponse {
     private int soLuong;
     private BigDecimal donGia;
 
-    public ViewHoaDonCTResponse(String ma, String tenSp, int soLuong, BigDecimal donGia) {
+    public ViewHoaDonCTResponse(HoaDonCT hdct) {
         this.ma = ma;
         this.tenSp = tenSp;
         this.soLuong = soLuong;
