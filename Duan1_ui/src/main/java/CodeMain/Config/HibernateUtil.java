@@ -5,7 +5,6 @@ import CodeMain.domainModel.DanhMuc;
 import CodeMain.domainModel.Hang;
 import CodeMain.domainModel.HoaDon;
 import CodeMain.domainModel.HoaDonCT;
-import CodeMain.domainModel.Imei;
 import CodeMain.domainModel.KhachHang;
 import CodeMain.domainModel.MatKinh;
 import CodeMain.domainModel.MauSac;
@@ -47,7 +46,6 @@ public class HibernateUtil {
         conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(DanhMuc.class);
         conf.addAnnotatedClass(Hang.class);
-        conf.addAnnotatedClass(Imei.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(MatKinh.class);
         conf.addAnnotatedClass(MauSac.class);

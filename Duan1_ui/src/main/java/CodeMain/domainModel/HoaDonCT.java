@@ -44,8 +44,6 @@ public class HoaDonCT {
 
     private int trangThai;
 
-    private String imei;
-
     @Temporal(TemporalType.DATE)
     private Date createdDate;
 
@@ -56,7 +54,7 @@ public class HoaDonCT {
 
     @Override
     public String toString() {
-        return "HoaDonCT{" + "id=" + id + ", chiTietSP=" + chiTietSP + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", donGia=" + donGia + ", trangThai=" + trangThai + ", imei=" + imei + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+        return "HoaDonCT{" + "id=" + id + ", chiTietSP=" + chiTietSP + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", donGia=" + donGia + ", trangThai=" + trangThai + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
     }
 
 }

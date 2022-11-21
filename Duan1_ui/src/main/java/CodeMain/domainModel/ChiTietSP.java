@@ -67,10 +67,6 @@ public class ChiTietSP {
     @JoinColumn(name = "idDanhMuc")
     private DanhMuc danhMuc;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idImei")
-    private Imei imei;
-
     private String image;
 
     private int namBH;
@@ -94,7 +90,7 @@ public class ChiTietSP {
 
     @Override
     public String toString() {
-        return "ChiTietSP{" + "id=" + id + ", ma=" + ma + ", sanPham=" + sanPham + ", noiSX=" + noiSX + ", hang=" + hang + ", mauSac=" + mauSac + ", matKinh=" + matKinh + ", danhMuc=" + danhMuc + ", imei=" + imei + ", image=" + image + ", namBH=" + namBH + ", moTa=" + moTa + ", donGia=" + donGia + ", soLuong=" + soLuong + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted +  '}';
+        return "ChiTietSP{" + "id=" + id + ", ma=" + ma + ", sanPham=" + sanPham + ", noiSX=" + noiSX + ", hang=" + hang + ", mauSac=" + mauSac + ", matKinh=" + matKinh + ", danhMuc=" + danhMuc + ", image=" + image + ", namBH=" + namBH + ", moTa=" + moTa + ", donGia=" + donGia + ", soLuong=" + soLuong + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted +  '}';
     }
 
     
