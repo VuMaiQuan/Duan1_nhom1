@@ -16,7 +16,7 @@ public interface HoaDonService {
 
     public List<ViewHoaDonResponse> getListAll();
 
-    public ViewHoaDonResponse getOneObj(String ma);
+    public HoaDon getOneObj(String ma);
 
     public void save(HoaDon hd) throws Exception; 
 
