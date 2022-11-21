@@ -56,7 +56,7 @@ public class FrmBanHang extends javax.swing.JPanel {
         tempListHoaDonCT = new ArrayList<>();
 //  getdata from service chi tiết sp mặc định
         listChiTietSPResponse = chiTietSPService.getListAll();
-        //listHDResponse = hdService.getListAll(); tắt tạm 
+        listHoaDonResponse = hoaDonService.getListAll();
 
         //show tbl danh sách sản phẩm khi open form bán hàng
         loadTableChiTietSP(listChiTietSPResponse);
@@ -76,10 +76,9 @@ public class FrmBanHang extends javax.swing.JPanel {
     public void loadTableHoaDon(List<ViewHoaDonResponse> list) {
         DTMHoaDon.setRowCount(0);
         for (var x : list) {
-          
-              
-                DTMHoaDon.addRow(x.rowData());
-            
+
+            DTMHoaDon.addRow(x.rowData());
+
         }
     }
 //bảng giỏ hàng . hóa đơn ct
@@ -568,9 +567,16 @@ public class FrmBanHang extends javax.swing.JPanel {
     private void tblDSCTSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSCTSPMouseClicked
         // TODO add your handling code here:
         int rowclDanhsachSP = tblDSCTSP.getSelectedRow();
-        String mactsp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 0).toString();
-        String tenctsp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 1).toString();
+//        String mactsp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 0).toString();
+//        String tenctsp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 1).toString();
         //
+
+        String sls = JOptionPane.showInputDialog("Nhập số lượng");
+        int sl;
+        if (sls!=null) {
+            sl = Integer.parseInt(sls);
+            System.out.println(sl);
+        }
 
 
     }//GEN-LAST:event_tblDSCTSPMouseClicked

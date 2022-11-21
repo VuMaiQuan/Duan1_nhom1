@@ -25,7 +25,6 @@ public class ViewCTSPReponse {
     private int namBH;
     private String matKinh;
     private String noiSX;
-    private String imei;
 
     public ViewCTSPReponse(ChiTietSP ctsp) {
         this.ma = ctsp.getMa();
@@ -36,7 +35,6 @@ public class ViewCTSPReponse {
         this.namBH = ctsp.getNamBH();
         this.matKinh = ctsp.getMatKinh().getTen();
         this.noiSX = ctsp.getNoiSX().getTen();
-        this.imei = ctsp.getImei().getMaImei();
     }
 // giữ lại imei
 

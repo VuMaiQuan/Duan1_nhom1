@@ -44,15 +44,6 @@ createdDate date ,
 updatedDate date,
 deleted bit default 0
 )
-go
---imei
-CREATE TABLE Imei(
-id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-maImei VARCHAR(20) UNIQUE,
-createdDate date ,
-updatedDate date,
-deleted bit default 0
-)
 
 go
 -- san pham
@@ -85,7 +76,6 @@ idHang uniqueidentifier ,
 idMauSac uniqueidentifier ,
 idMatKinh uniqueidentifier ,
 idDanhMuc uniqueidentifier ,
-idImei uniqueidentifier ,
 image nvarchar(50) ,
 namBH int default 0,
 moTa nvarchar(150) ,
@@ -105,7 +95,6 @@ idHD uniqueidentifier ,
 soLuong int ,
 donGia money default 0,
 trangThai int default 0,
-imei varchar(20) ,
 createdDate date ,
 updatedDate date ,
 deleted bit default 0 ,
@@ -184,19 +173,7 @@ CREATE TABLE Voucher(
 	deleted bit default 0
 )
 go
---bao hanh
-CREATE TABLE BaoHanh(
-	id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-	idHDCT uniqueidentifier ,
-	ma varchar(10) unique ,
-	tenCTSP nvarchar(70)  ,
-	imei int  ,
-	lidoBH nvarchar(70) ,
-	trangThai int ,
-	createdDate date  ,
-	updatedDate date 
-)
-GO
+
 --TẠO QUAN HỆ GIỮA CÁC BẢNG
 --ctsp - thuộc tính
 ALTER TABLE CTSP ADD FOREIGN KEY (idSP) REFERENCES SanPham(id)
@@ -205,7 +182,7 @@ ALTER TABLE CTSP ADD FOREIGN KEY (idHang) REFERENCES Hang(id)
 ALTER TABLE CTSP ADD FOREIGN KEY (idMauSac) REFERENCES MauSac(id)
 ALTER TABLE CTSP ADD FOREIGN KEY (idMatKinh) REFERENCES MatKinh(id)
 ALTER TABLE CTSP ADD FOREIGN KEY (idDanhMuc) REFERENCES DanhMuc(id)
-ALTER TABLE CTSP ADD FOREIGN KEY (idImei) REFERENCES Imei(id)
+
 
 
 
@@ -220,7 +197,7 @@ ALTER TABLE HoaDon ADD FOREIGN KEY (idVoucher) REFERENCES Voucher(id)
 
 -- tài khoản
 ALTER TABLE TaiKhoan ADD FOREIGN KEY (idNguoiDung) REFERENCES NguoiDung(id)
---bảo hành 
-ALTER TABLE BaoHanh ADD FOREIGN KEY (idHDCT) REFERENCES HDCT(id)
+
+
 
 
