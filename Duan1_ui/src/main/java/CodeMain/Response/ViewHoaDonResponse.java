@@ -30,10 +30,20 @@ public class ViewHoaDonResponse {
     public ViewHoaDonResponse(HoaDon hd) {
         this.maHD = hd.getMa();
         this.ngayTao = hd.getCreatedDate();
-        this.tenNV = hd.getNguoiDung().getHoTen();
-        this.tenKH = hd.getKhachHang()== null? "Khách lẻ" : hd.getKhachHang().getHoTen();
-//        this.tenKH = "Trống";
-        this.trangThai = hd.getTrangThai() == 0 ? "Đã thanh toán" : "Chờ";
+        this.tenNV = hd.getNguoiDung() == null ? "Duy Hưng" : hd.getNguoiDung().getHoTen();
+        this.tenKH = hd.getKhachHang() == null ? "Khách lẻ" : hd.getKhachHang().getHoTen();
+        switch (hd.getTrangThai()) {
+            case 0:
+                this.trangThai = "Đã thanh toán";
+                break;
+            case 1:
+                this.trangThai = "Chờ thanh toán";
+                break;
+            default:
+                this.trangThai = "Đã Hủy";
+                break;
+        }
+        
     }
 
     public Object[] rowData() {

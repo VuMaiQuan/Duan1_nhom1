@@ -43,6 +43,9 @@ public class PanelMenu extends JComponent {
         panelMenu.setOpaque(false);
         panelMenu.setLayout(new MigLayout("wrap", "[fill]", "0[]0"));
         add(panelMenu);
+        ///test bán hàng nhanh
+        addMenu("Bán Hàng");
+        //
         lg = new Login();
         boolean role;
         NguoiDung nd = lg.ndLogin;
