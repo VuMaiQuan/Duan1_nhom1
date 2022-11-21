@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CodeMain.Response;
 
 import CodeMain.domainModel.HoaDon;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,15 +31,14 @@ public class ViewHoaDonResponse {
         this.maHD = hd.getMa();
         this.ngayTao = hd.getCreatedDate();
         this.tenNV = hd.getNguoiDung().getHoTen();
-        this.tenKH = hd.getKhachHang().getHoTen();
+        this.tenKH = hd.getKhachHang()== null? "Khách lẻ" : hd.getKhachHang().getHoTen();
+//        this.tenKH = "Trống";
         this.trangThai = hd.getTrangThai() == 0 ? "Đã thanh toán" : "Chờ";
     }
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
     public Object[] rowData() {
         return new Object[]{
-            this.maHD, this.ngayTao, sdf.format(this.tenNV), this.tenKH, this.trangThai
+            this.maHD, this.ngayTao, this.tenNV, this.tenKH, this.trangThai
         };
     }
 

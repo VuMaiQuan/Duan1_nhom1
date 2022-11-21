@@ -8,10 +8,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,19 +53,20 @@ public class KhachHang {
 
     private String diaChi;
 
+    @Temporal(TemporalType.DATE)
     private Date createdDate;
 
+    @Temporal(TemporalType.DATE)
     private Date updatedDate;
 
     private boolean deleted;
 
-    @OneToMany(mappedBy = "nguoiDung")
-    private List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+    @OneToMany(mappedBy = "khachHang", fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon = new ArrayList<>();
 
     @Override
     public String toString() {
         return "KhachHang{" + "id=" + id + ", ma=" + ma + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email + ", sdt=" + sdt + ", diaChi=" + diaChi + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
     }
 
-    
 }

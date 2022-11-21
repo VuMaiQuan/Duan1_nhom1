@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CodeMain.services.serviceImp;
 
 import CodeMain.Response.ViewHoaDonResponse;
@@ -27,6 +23,7 @@ public class HoaDonServiceImp implements HoaDonService {
 
     @Override
     public List<ViewHoaDonResponse> getListAll() {
+        listHD = hdRepository.getListAll();
         List<ViewHoaDonResponse> list = new ArrayList<>();
         for (HoaDon x : listHD) {
             list.add(new ViewHoaDonResponse(x));
@@ -35,8 +32,8 @@ public class HoaDonServiceImp implements HoaDonService {
     }
 
     @Override
-    public ViewHoaDonResponse getOneObj(String ma) {
-        return null;
+    public HoaDon getOneObj(String ma) {
+        return hdRepository.getOneHoaDon(ma);
     }
 
     @Override
@@ -68,6 +65,15 @@ public class HoaDonServiceImp implements HoaDonService {
             e.printStackTrace();
             throw e;
         }
+    }
+
+    public static void main(String[] args) {
+        HoaDonServiceImp hd = new HoaDonServiceImp();
+        hd.getListAll().forEach(x
+                -> {
+            System.out.println(x);
+        }
+        );
     }
 
 }

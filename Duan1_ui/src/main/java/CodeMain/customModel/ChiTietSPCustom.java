@@ -1,4 +1,4 @@
-package CodeMain.customModel;
+package CodeMain.custommodel;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
