@@ -24,6 +24,7 @@ public class CTSPServiceImp implements CTSPService {
 
     @Override
     public List<ViewCTSPReponse> getListAll() {
+        listCTSP = ctspRepo.getListAll();
         List<ViewCTSPReponse> list = new ArrayList<>();
         for (ChiTietSP x : listCTSP) {
             list.add(new ViewCTSPReponse(x));
@@ -32,23 +33,38 @@ public class CTSPServiceImp implements CTSPService {
     }
 
     @Override
-    public ViewCTSPReponse getOneObj(String ma) {
-        return null;
+    public ChiTietSP getOneObj(String ma) {
+        return ctspRepo.getOneChiTietSP(ma);
     }
 
     @Override
     public void save(ChiTietSP ctsp) throws Exception {
-
+        try {
+            ctspRepo.create(ctsp);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Override
     public void update(ChiTietSP ctsp) throws Exception {
-
+        try {
+            ctspRepo.create(ctsp);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Override
     public void delete(String ma) throws Exception {
-
+        try {
+            ctspRepo.delete(ma);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public static void main(String[] args) {

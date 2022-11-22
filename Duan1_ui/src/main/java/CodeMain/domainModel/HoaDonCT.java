@@ -1,5 +1,6 @@
 package CodeMain.domainModel;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,6 +24,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+
 public class HoaDonCT {
 
     @Id
@@ -33,14 +36,14 @@ public class HoaDonCT {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idCTSP")
     private ChiTietSP chiTietSP;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idHD")
     private HoaDon hoaDon;
 
     private int soLuong;
 
-    private double donGia;
+    private BigDecimal donGia;
 
     private int trangThai;
 
@@ -54,7 +57,7 @@ public class HoaDonCT {
 
     @Override
     public String toString() {
-        return "HoaDonCT{" + "id=" + id + ", chiTietSP=" + chiTietSP + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", donGia=" + donGia + ", trangThai=" + trangThai + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+        return "HoaDonCT{" + "id=" + id + ", chiTietSP=" + chiTietSP + ", hoaDon=" + hoaDon + ", soLuong=" + soLuong + ", donGia=" + donGia + ", trangThai=" + trangThai + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted +'}';
     }
 
 }

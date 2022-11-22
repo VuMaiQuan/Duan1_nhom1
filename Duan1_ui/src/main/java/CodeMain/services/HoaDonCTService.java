@@ -5,7 +5,8 @@
 package CodeMain.services;
 
 import CodeMain.Response.ViewHoaDonCTResponse;
-import CodeMain.domainModel.ChiTietSP;  
+import CodeMain.domainModel.ChiTietSP;
+import CodeMain.domainModel.HoaDon;
 import CodeMain.domainModel.HoaDonCT;
 import java.util.List;
 
@@ -17,7 +18,9 @@ public interface HoaDonCTService {
 
     public List<ViewHoaDonCTResponse> getListAll();
 
-    public ViewHoaDonCTResponse getOneObj(String ma);
+    public List<ViewHoaDonCTResponse> getListShowTBLAll(HoaDon hd);
+
+    public HoaDonCT getOneObj(String ma);
 
     public void save(HoaDonCT hdct) throws Exception;
 

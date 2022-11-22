@@ -4,6 +4,7 @@ import CodeMain.Response.ViewCTSPReponse;
 import CodeMain.Response.ViewHoaDonCTResponse;
 import CodeMain.Response.ViewHoaDonResponse;
 import CodeMain.domainModel.HoaDon;
+import CodeMain.domainModel.HoaDonCT;
 import CodeMain.services.CTSPService;
 import CodeMain.services.HoaDonCTService;
 import CodeMain.services.HoaDonService;
@@ -36,9 +37,8 @@ public class FrmBanHang extends javax.swing.JPanel {
     List<ViewCTSPReponse> listChiTietSPResponse;
     List<ViewHoaDonResponse> listHoaDonResponse;
     List<ViewHoaDonCTResponse> listHoaDonCTResponse;
-    List<ViewHoaDonCTResponse> tempListHoaDonCT;
 
-    String maDSSP = "";
+    HoaDon hoaDonCho = null;
 
     public FrmBanHang() {
         initComponents();
@@ -53,7 +53,6 @@ public class FrmBanHang extends javax.swing.JPanel {
         listChiTietSPResponse = new ArrayList<>();
         listHoaDonCTResponse = new ArrayList<>();
         listHoaDonResponse = new ArrayList<>();
-        tempListHoaDonCT = new ArrayList<>();
 //  getdata from service chi tiết sp mặc định
         listChiTietSPResponse = chiTietSPService.getListAll();
         listHoaDonResponse = hoaDonService.getListAll();
@@ -83,13 +82,12 @@ public class FrmBanHang extends javax.swing.JPanel {
     }
 //bảng giỏ hàng . hóa đơn ct
 
-    public void loadTableHoaDonCTfromListTemp(List<ViewHoaDonCTResponse> list) {
-        DTMGioHang.setRowCount(0);
-        for (var x : list) {
-            DTMGioHang.addRow(x.rowData());
-        }
-    }
-
+//    public void loadTableHoaDonCTfromListTemp(List<ViewHoaDonCTResponse> list) {
+//        DTMGioHang.setRowCount(0);
+//        for (var x : list) {
+//            DTMGioHang.addRow(x.rowData());
+//        }
+//    }
     public void loadTableHoaDonCTfromDB(List<ViewHoaDonCTResponse> list) {
         DTMGioHang.setRowCount(0);
         for (var x : list) {
@@ -149,8 +147,8 @@ public class FrmBanHang extends javax.swing.JPanel {
         txtTienKhachDua = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnRemoveOne = new javax.swing.JButton();
+        btnRemoveAll = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblGioHang = new javax.swing.JTable();
 
@@ -164,6 +162,11 @@ public class FrmBanHang extends javax.swing.JPanel {
                 "Mã hóa đơn", "Ngày tạo", "Nhân viên tạo", "Khách hàng", "Trạng Thái"
             }
         ));
+        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHoaDon);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -476,11 +479,11 @@ public class FrmBanHang extends javax.swing.JPanel {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Giỏ Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton8.setText("Xóa Sản Phẩm");
+        btnRemoveOne.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnRemoveOne.setText("Xóa Sản Phẩm");
 
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton9.setText("Xóa Tất cả");
+        btnRemoveAll.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnRemoveAll.setText("Xóa Tất cả");
 
         tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -501,17 +504,17 @@ public class FrmBanHang extends javax.swing.JPanel {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRemoveOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemoveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRemoveOne, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRemoveAll, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,43 +559,63 @@ public class FrmBanHang extends javax.swing.JPanel {
         HoaDon hoad = new HoaDon(null, mahd, null, null, null, new BigDecimal(0), new Date(), new Date(), 1);
         try {
             hoaDonService.save(hoad);
+            JOptionPane.showMessageDialog(this, " thêm hóa đơn thành công");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi thêm hóa đơn");
         }
+        loadTableHoaDon(hoaDonService.getListAll());
 
 
     }//GEN-LAST:event_btnTaoHDActionPerformed
 
+    List<HoaDonCT> listGioHangTemp = new ArrayList<>();
+
     private void tblDSCTSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSCTSPMouseClicked
         // TODO add your handling code here:
         int rowclDanhsachSP = tblDSCTSP.getSelectedRow();
-//        String mactsp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 0).toString();
-//        String tenctsp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 1).toString();
-        //
 
-        String sls = JOptionPane.showInputDialog("Nhập số lượng");
-        int sl;
-        if (sls!=null) {
-            sl = Integer.parseInt(sls);
-            System.out.println(sl);
+        String maSp = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 0).toString();
+        String tenCTSP = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 1).toString();
+        String donGia = tblDSCTSP.getModel().getValueAt(rowclDanhsachSP, 2).toString();
+        String sls = JOptionPane.showInputDialog("Nhập số lượng: ");
+
+        if (sls != null) {
+            int sl = Integer.parseInt(sls);
+            DTMGioHang.addRow(new Object[]{maSp, tenCTSP, donGia, sl});
         }
 
 
     }//GEN-LAST:event_tblDSCTSPMouseClicked
 
+    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
+        // TODO add your handling code here:
+        int rowcl = tblHoaDon.getSelectedRow();
+        String ma = tblHoaDon.getValueAt(rowcl, 0).toString();
+        HoaDon hoaDonCl = hoaDonService.getOneObj(ma);
+        if (hoaDonCTService.getListShowTBLAll(hoaDonCl) != null) {
+            List<ViewHoaDonCTResponse> listHDCT = hoaDonCTService.getListShowTBLAll(hoaDonCl);
+            loadTableHoaDonCTfromDB(listHDCT);
+        } else {
+            hoaDonCho = hoaDonService.getOneObj(ma);
+            DTMGioHang.setRowCount(0);
+
+        }
+        System.out.println(hoaDonCho);
+    }//GEN-LAST:event_tblHoaDonMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyHD;
     private javax.swing.JButton btnRefrest;
+    private javax.swing.JButton btnRemoveAll;
+    private javax.swing.JButton btnRemoveOne;
     private javax.swing.JButton btnTaoHD;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThemSP;
     private javax.swing.JComboBox<String> cboSP;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

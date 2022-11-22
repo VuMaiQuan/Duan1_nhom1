@@ -15,12 +15,10 @@ import org.hibernate.Transaction;
  */
 public class CTSPRepository {
 
-    private final Session s = HibernateUtil.getFactory().openSession();
 //list
-
     public List<ChiTietSP> getListAll() {
         List<ChiTietSP> list = new ArrayList<>();
-        try {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
             TypedQuery<ChiTietSP> qr = s.createQuery("from ChiTietSP");
             list = qr.getResultList();
             s.close();
@@ -33,7 +31,7 @@ public class CTSPRepository {
 
     public ChiTietSP getOneChiTietSP(String ma) {
         ChiTietSP nd;
-        try {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
             Query qr = s.createQuery("from ChiTietSP where ma=:ma", ChiTietSP.class);
             qr.setParameter("ma", ma);
             nd = (ChiTietSP) qr.getSingleResult();
@@ -45,41 +43,51 @@ public class CTSPRepository {
         }
     }
 
-    public void create(ChiTietSP nd) throws Exception {
-        Transaction trans = s.getTransaction();
-        try {
-            trans.begin();
-            s.saveOrUpdate(nd);
-            trans.commit();
-            s.close();
+    public void create(ChiTietSP ctsp) throws Exception {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction trans = s.beginTransaction();
+            try {
+                s.saveOrUpdate(ctsp);
+                trans.commit();
+               
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                trans.rollback();
+                throw e;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();;
             throw e;
         }
     }
 
-    public void delete(String ma) throws Exception {
-        Transaction trans = s.getTransaction();
-        try {
-            trans.begin();
-            Query qr = s.createQuery("delete from ChiTietSP where ma=:ma");
-            qr.setParameter("ma", ma);
-            qr.executeUpdate();
-            trans.commit();
-            s.close();
+    public void delete(String ma) throws Exception {//xóa là update deleted =1;
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction trans = s.beginTransaction();
+            try {
+                Query qr = s.createQuery("delete from ChiTietSP where ma=:ma");
+                qr.setParameter("ma", ma);
+                qr.executeUpdate();
+                trans.commit();
+                
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                trans.rollback();
+                throw e;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();;
             throw e;
         }
     }
 
     public static void main(String[] args) {
         CTSPRepository ctsp = new CTSPRepository();
-//        for (var x : ctsp.getListAll()) {
-//            System.out.println(x);
-//        }
+        for (var x : ctsp.getListAll()) {
+            System.out.println(x);
+        }
 
     }
 }

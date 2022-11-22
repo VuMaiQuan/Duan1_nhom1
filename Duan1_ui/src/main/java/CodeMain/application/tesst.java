@@ -1,5 +1,7 @@
 package CodeMain.application;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,8 +11,11 @@ import javax.swing.JOptionPane;
 public class tesst {
 
     public static void main(String[] args) {
-        String sl=JOptionPane.showInputDialog("Mời nhập sl: ");
-        System.out.println(sl);
+        List<String> a = new ArrayList<>();
+        a.add("ma01");
+        a.add("ma02");
+        a.add("ma03");
+        
     }
 
 }

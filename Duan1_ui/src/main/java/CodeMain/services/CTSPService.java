@@ -12,7 +12,7 @@ public interface CTSPService {
 
     public List<ViewCTSPReponse> getListAll();
 
-    public ViewCTSPReponse getOneObj(String ma);
+    public ChiTietSP getOneObj(String ma);
 
     public void save(ChiTietSP ctsp) throws Exception;
 

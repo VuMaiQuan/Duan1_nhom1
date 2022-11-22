@@ -5,7 +5,9 @@
 package CodeMain.services.serviceImp;
 
 import CodeMain.Response.ViewHoaDonCTResponse;
+import CodeMain.domainModel.HoaDon;
 import CodeMain.domainModel.HoaDonCT;
+import CodeMain.repository.HoaDonCTRepository;
 import CodeMain.services.HoaDonCTService;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,30 +18,75 @@ import java.util.List;
  */
 public class HoaDonCTServiceImp implements HoaDonCTService {
 
-    @Override
-    public List<ViewHoaDonCTResponse> getListAll() {
-        List<ViewHoaDonCTResponse> list = new ArrayList<>();
-        return list;
+    HoaDonCTRepository hdctRepository;
+
+    public HoaDonCTServiceImp() {
+        hdctRepository = new HoaDonCTRepository();
+        getListAll();
     }
 
     @Override
-    public ViewHoaDonCTResponse getOneObj(String ma) {
-        return null;
+    public List<ViewHoaDonCTResponse> getListAll() {
+        List<ViewHoaDonCTResponse> list = new ArrayList<>();
+        for (HoaDonCT x : hdctRepository.getListAll()) {
+            list.add(new ViewHoaDonCTResponse(x));
+        }
+        return list.isEmpty() ? null : list;
+    }
+
+    @Override
+    public HoaDonCT getOneObj(String ma) {
+        return hdctRepository.getOneHoaDonCT(ma);
     }
 
     @Override
     public void save(HoaDonCT hdct) throws Exception {
-
+        try {
+            hdctRepository.create(hdct);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Override
     public void update(HoaDonCT hdct) throws Exception {
-
+        try {
+            hdctRepository.create(hdct);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @Override
     public void delete(String ma) throws Exception {
-
+        try {
+            hdctRepository.delete(ma);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
+    public static void main(String[] args) {
+        HoaDonCTServiceImp hd = new HoaDonCTServiceImp();
+        for (ViewHoaDonCTResponse x : hd.getListAll()) {
+            System.out.println(x);
+        }
+    }
+
+    @Override
+    public List<ViewHoaDonCTResponse> getListShowTBLAll(HoaDon hd) {
+        List<ViewHoaDonCTResponse> list = new ArrayList<>();
+        if (hd.getListHDCT().isEmpty()) {
+            return null;
+        } else {
+            for (HoaDonCT x : hd.getListHDCT()) {
+                list.add(new ViewHoaDonCTResponse(x));
+            }
+            return list;
+        }
+
+    }
 }
