@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CodeMain.Response;
 
-import CodeMain.domainModel.ChiTietSP;
 import CodeMain.domainModel.HoaDonCT;
 import java.math.BigDecimal;
 import lombok.Getter;
@@ -22,14 +17,19 @@ import lombok.ToString;
 @ToString
 public class ViewHoaDonCTResponse {
 
+    private String idHDCT;
     private String ma;
     private String tenSp;
     private int soLuong;
     private BigDecimal donGia;
 
-   
-
-   
+    public ViewHoaDonCTResponse(HoaDonCT hdct) {
+        this.idHDCT = hdct.getId();
+        this.ma = hdct.getChiTietSP().getMa();
+        this.tenSp = hdct.getChiTietSP().getSanPham().getTen() + " " + hdct.getChiTietSP().getHang().getTen() + " " + hdct.getChiTietSP().getDanhMuc().getTen();
+        this.soLuong = hdct.getSoLuong();
+        this.donGia = hdct.getDonGia().setScale(1);
+    }
 
     public Object[] rowData() {
         return new Object[]{
