@@ -49,7 +49,6 @@ public class CTSPRepository {
             try {
                 s.saveOrUpdate(ctsp);
                 trans.commit();
-               
                 s.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -70,7 +69,7 @@ public class CTSPRepository {
                 qr.setParameter("ma", ma);
                 qr.executeUpdate();
                 trans.commit();
-                
+
                 s.close();
             } catch (Exception e) {
                 e.printStackTrace();

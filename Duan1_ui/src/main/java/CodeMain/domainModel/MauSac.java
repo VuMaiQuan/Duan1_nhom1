@@ -4,7 +4,8 @@
  */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -50,6 +51,15 @@ public class MauSac {
 
     @OneToMany(mappedBy = "mauSac")
     private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    public MauSac(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
 
     @Override
     public String toString() {

@@ -72,7 +72,8 @@ public class ChiTietSP {
 
     private String moTa;
 
-    private BigDecimal donGia;
+//    private BigDecimal donGia;
+    private double donGia;
 
     private int soLuong;
 
@@ -86,6 +87,39 @@ public class ChiTietSP {
 
     @OneToMany(mappedBy = "chiTietSP", fetch = FetchType.LAZY)
     private List<HoaDonCT> ListHDCT = new ArrayList<>();
+
+//    public ChiTietSP(String id, String ma, SanPham sanPham, NoiSX noiSX, Hang hang, MauSac mauSac, MatKinh matKinh, DanhMuc danhMuc, String image, int namBH, String moTa, double donGia, int soLuong) {
+//        this.id = id;
+//        this.ma = ma;
+//        this.sanPham = sanPham;
+//        this.noiSX = noiSX;
+//        this.hang = hang;
+//        this.mauSac = mauSac;
+//        this.matKinh = matKinh;
+//        this.danhMuc = danhMuc;
+//        this.image = image;
+//        this.namBH = namBH;
+//        this.moTa = moTa;
+//        this.donGia = donGia;
+//        this.soLuong = soLuong;
+//    }
+
+    public ChiTietSP(String id, String ma, SanPham sanPham, NoiSX noiSX, Hang hang, MauSac mauSac, MatKinh matKinh, DanhMuc danhMuc, String image, int namBH, String moTa, double donGia, int soLuong) {
+        this.id = id;
+        this.ma = ma;
+        this.sanPham = sanPham;
+        this.noiSX = noiSX;
+        this.hang = hang;
+        this.mauSac = mauSac;
+        this.matKinh = matKinh;
+        this.danhMuc = danhMuc;
+        this.image = image;
+        this.namBH = namBH;
+        this.moTa = moTa;
+        this.donGia = donGia;
+        this.soLuong = soLuong;
+    }
+ 
 
     @Override
     public String toString() {

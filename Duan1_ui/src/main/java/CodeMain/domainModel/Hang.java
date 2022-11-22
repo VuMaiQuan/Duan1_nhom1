@@ -5,7 +5,8 @@
  */
 package CodeMain.domainModel;
 
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -50,9 +51,20 @@ public class Hang {
 
     private boolean deleted;
 
+    
     @OneToMany(mappedBy = "hang")
     private List<ChiTietSP> listCTSP = new ArrayList<>();
 
+    public Hang(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
+    
+    
     @Override
     public String toString() {
         return "Hang{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';

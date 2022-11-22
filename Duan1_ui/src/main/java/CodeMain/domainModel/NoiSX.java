@@ -44,6 +44,15 @@ public class NoiSX {
     @OneToMany(mappedBy = "noiSX",fetch = FetchType.LAZY)
     private List<ChiTietSP> listCTSP = new ArrayList<>();
 
+    public NoiSX(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
+
     @Override
     public String toString() {
         return "NoiSX{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
