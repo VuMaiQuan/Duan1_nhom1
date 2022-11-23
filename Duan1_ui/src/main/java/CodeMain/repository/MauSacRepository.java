@@ -1,11 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
-import CodeMain.domainModel.HoaDonCT;
+import CodeMain.domainModel.MauSac;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,12 +18,12 @@ import org.hibernate.Transaction;
  *
  * @author hungs
  */
-public class HoaDonCTRepository {
+public class MauSacRepository {
 
-    public List<HoaDonCT> getListAll() {
-        List<HoaDonCT> list = new ArrayList<>();
+    public List<MauSac> getListAll() {
+        List<MauSac> list = new ArrayList<>();
         try ( Session s = HibernateUtil.getFactory().openSession()) {
-            TypedQuery<HoaDonCT> qr = s.createQuery("from HoaDonCT");
+            TypedQuery<MauSac> qr = s.createQuery("from MauSac");
             list = qr.getResultList();
             s.close();
             return list;
@@ -27,12 +32,12 @@ public class HoaDonCTRepository {
         }
     }
 
-    public HoaDonCT getOneHoaDonCT(String ma) {
-        HoaDonCT nd;
+    public MauSac getOneMauSac(String ma) {
+        MauSac nd;
         try ( Session s = HibernateUtil.getFactory().openSession()) {
-            Query qr = s.createQuery("from HoaDonCT where ma=:ma", HoaDonCT.class);
+            Query qr = s.createQuery("from MauSac where ma=:ma", MauSac.class);
             qr.setParameter("ma", ma);
-            nd = (HoaDonCT) qr.getSingleResult();
+            nd = (MauSac) qr.getSingleResult();
             //tat tam close 
             s.close();
             return nd;
@@ -42,7 +47,7 @@ public class HoaDonCTRepository {
         }
     }
 
-    public void create(HoaDonCT nd) throws Exception {
+    public void create(MauSac nd) throws Exception {
 
         try ( Session s = HibernateUtil.getFactory().openSession()) {
             Transaction trans = s.beginTransaction();
@@ -65,7 +70,7 @@ public class HoaDonCTRepository {
         try ( Session s = HibernateUtil.getFactory().openSession()) {
             Transaction trans = s.beginTransaction();
             try {
-                Query qr = s.createQuery("delete from HoaDonCT where ma=:ma");
+                Query qr = s.createQuery("delete from MauSac where ma=:ma");
                 qr.setParameter("ma", ma);
                 qr.executeUpdate();
                 trans.commit();
@@ -82,10 +87,10 @@ public class HoaDonCTRepository {
     }
 
     public static void main(String[] args) {
-        HoaDonCTRepository hdct = new HoaDonCTRepository();
-        for (var x : hdct.getListAll()) {
+        MauSacRepository hd = new MauSacRepository();
+        hd.getListAll().forEach(x -> {
             System.out.println(x);
-        }
-        //  System.out.println(hdct.getOneHoaDonCT("ABCD49AF-9E91-40DF-445A-5FBF99769C75"));
+        });
+
     }
 }

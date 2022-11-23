@@ -2,6 +2,7 @@ package CodeMain.services.serviceImp;
 
 import CodeMain.Response.ViewCTSPReponse;
 import CodeMain.domainModel.ChiTietSP;
+import CodeMain.domainModel.HoaDon;
 import CodeMain.repository.CTSPRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,17 @@ public class CTSPServiceImp implements CTSPService {
             System.out.println(x);
         }
 
+    }
+
+    @Override
+    public List<ViewCTSPReponse> getListCustom(String text) {
+        List<ViewCTSPReponse> list = new ArrayList<>();
+        for (ChiTietSP x : ctspRepo.getListAll()) {
+            if (x.getMa().toLowerCase().contains(text.toLowerCase()) || x.getHang().getTen().toLowerCase().contains(text.toLowerCase())) {
+                list.add(new ViewCTSPReponse(x));
+            }
+        }
+        return list;
     }
 
 }
