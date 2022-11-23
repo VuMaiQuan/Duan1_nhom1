@@ -40,7 +40,7 @@ public class ViewHoaDonResponse {
                 this.trangThai = "Chờ thanh toán";
                 break;
             default:
-                this.trangThai = "Đã Hủy";
+                this.trangThai = "Hóa đơn hủy";
                 break;
         }
         

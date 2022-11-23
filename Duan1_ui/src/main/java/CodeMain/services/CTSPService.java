@@ -11,6 +11,8 @@ import java.util.List;
 public interface CTSPService {
 
     public List<ViewCTSPReponse> getListAll();
+    
+    public List<ViewCTSPReponse> getListCustom(String text);
 
     public ChiTietSP getOneObj(String ma);
 

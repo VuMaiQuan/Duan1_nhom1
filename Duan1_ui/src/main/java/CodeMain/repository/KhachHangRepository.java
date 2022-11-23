@@ -21,7 +21,7 @@ public class KhachHangRepository {
     
     private final Session s = HibernateUtil.getFactory().openSession();
 
-    public List<KhachHang> getList() {
+    public List<KhachHang> getListAll() {
         List<KhachHang> list = new ArrayList<>();
         try {
             TypedQuery<KhachHang> qr = s.createQuery("from KhachHang");
@@ -33,11 +33,11 @@ public class KhachHangRepository {
         }
     }
 
-    public KhachHang getOneKhachHang(String ma) {
+    public KhachHang getOneKhachHang(String sdt) {
         KhachHang nd;
         try {
-            Query qr = s.createQuery("from KhachHang where ma=:ma", KhachHang.class);
-            qr.setParameter("ma", ma);
+            Query qr = s.createQuery("from KhachHang where sdt=:sdt", KhachHang.class);
+            qr.setParameter("sdt", sdt);
             nd = (KhachHang) qr.getSingleResult();
             s.close();
             return nd;
@@ -79,8 +79,6 @@ public class KhachHangRepository {
 
     public static void main(String[] args) {
        KhachHangRepository kh = new KhachHangRepository();
-        for (var x : kh.getList()) {
-            System.out.println(x);
-        }
+        System.out.println(kh.getOneKhachHang("0934874321"));
     }
 }
