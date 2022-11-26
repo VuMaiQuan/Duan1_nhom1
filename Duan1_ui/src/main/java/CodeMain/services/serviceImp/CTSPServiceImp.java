@@ -40,6 +40,7 @@ public class CTSPServiceImp implements CTSPService {
 
     @Override
     public void save(ChiTietSP ctsp) throws Exception {
+        ctsp.setId(null);
         try {
             ctspRepo.create(ctsp);
         } catch (Exception e) {

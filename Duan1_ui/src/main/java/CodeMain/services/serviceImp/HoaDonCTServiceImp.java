@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CodeMain.services.serviceImp;
 
 import CodeMain.Response.ViewHoaDonCTResponse;
+import CodeMain.domainModel.ChiTietSP;
 import CodeMain.domainModel.HoaDon;
 import CodeMain.domainModel.HoaDonCT;
 import CodeMain.repository.HoaDonCTRepository;
@@ -22,7 +19,7 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
 
     public HoaDonCTServiceImp() {
         hdctRepository = new HoaDonCTRepository();
-        getListAll();
+        // getListAll();
     }
 
     @Override
@@ -41,6 +38,7 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
 
     @Override
     public void save(HoaDonCT hdct) throws Exception {
+        hdct.setId(null);
         try {
             hdctRepository.create(hdct);
         } catch (Exception e) {
@@ -60,9 +58,9 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
     }
 
     @Override
-    public void delete(String ma) throws Exception {
+    public void delete(String id) throws Exception {
         try {
-            hdctRepository.delete(ma);
+            hdctRepository.delete(id);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -75,18 +73,17 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
             System.out.println(x);
         }
     }
-
-    @Override
-    public List<ViewHoaDonCTResponse> getListShowTBLAll(HoaDon hd) {
-        List<ViewHoaDonCTResponse> list = new ArrayList<>();
-        if (hd.getListHDCT().isEmpty()) {
-            return null;
-        } else {
-            for (HoaDonCT x : hd.getListHDCT()) {
-                list.add(new ViewHoaDonCTResponse(x));
-            }
-            return list;
-        }
-
-    }
+//    @Override
+//    public List<ViewHoaDonCTResponse> getListHDCTRespon(HoaDon hd) {
+//        List<ViewHoaDonCTResponse> list = new ArrayList<>();
+//        if (hd.getListHDCT().isEmpty()) {
+//            return null;
+//        } else {
+//            for (HoaDonCT x : hd.getListHDCT()) {
+//                list.add(new ViewHoaDonCTResponse(x));
+//            }
+//            return list;
+//        }
+//
+//    }
 }

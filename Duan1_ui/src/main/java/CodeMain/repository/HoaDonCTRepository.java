@@ -1,6 +1,8 @@
 package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
+import CodeMain.domainModel.ChiTietSP;
+import CodeMain.domainModel.HoaDon;
 import CodeMain.domainModel.HoaDonCT;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,27 +29,26 @@ public class HoaDonCTRepository {
         }
     }
 
-    public HoaDonCT getOneHoaDonCT(String ma) {
-        HoaDonCT nd;
+    public HoaDonCT getOneHoaDonCT(String id) {
+        HoaDonCT hdct;
         try ( Session s = HibernateUtil.getFactory().openSession()) {
-            Query qr = s.createQuery("from HoaDonCT where ma=:ma", HoaDonCT.class);
-            qr.setParameter("ma", ma);
-            nd = (HoaDonCT) qr.getSingleResult();
-            //tat tam close 
+            Query qr = s.createQuery("from HoaDonCT where id=:id", HoaDonCT.class);
+            qr.setParameter("id", id);
+            hdct = (HoaDonCT) qr.getSingleResult();
             s.close();
-            return nd;
+            return hdct;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public void create(HoaDonCT nd) throws Exception {
+    public void create(HoaDonCT hdct) throws Exception {
 
         try ( Session s = HibernateUtil.getFactory().openSession()) {
             Transaction trans = s.beginTransaction();
             try {
-                s.saveOrUpdate(nd);
+                s.saveOrUpdate(hdct);
                 trans.commit();
                 s.close();
             } catch (Exception e) {
@@ -61,12 +62,12 @@ public class HoaDonCTRepository {
         }
     }
 
-    public void delete(String ma) throws Exception {
+    public void delete(String id) throws Exception {
         try ( Session s = HibernateUtil.getFactory().openSession()) {
             Transaction trans = s.beginTransaction();
             try {
-                Query qr = s.createQuery("delete from HoaDonCT where ma=:ma");
-                qr.setParameter("ma", ma);
+                Query qr = s.createQuery("delete from HoaDonCT where id=:id");
+                qr.setParameter("id", id);
                 qr.executeUpdate();
                 trans.commit();
                 s.close();

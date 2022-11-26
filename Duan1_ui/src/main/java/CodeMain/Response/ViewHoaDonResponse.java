@@ -17,7 +17,9 @@ import lombok.ToString;
 @ToString
 public class ViewHoaDonResponse {
 
-    private String maHD;
+    private String id;
+
+    private String ma;
 
     private Date ngayTao;
 
@@ -25,30 +27,19 @@ public class ViewHoaDonResponse {
 
     private String tenKH;
 
-    private String trangThai;
+    private int trangThai;
 
     public ViewHoaDonResponse(HoaDon hd) {
-        this.maHD = hd.getMa();
+        this.ma = hd.getMa();
         this.ngayTao = hd.getCreatedDate();
         this.tenNV = hd.getNguoiDung() == null ? "Duy Hưng" : hd.getNguoiDung().getHoTen();
         this.tenKH = hd.getKhachHang() == null ? "Khách lẻ" : hd.getKhachHang().getHoTen();
-        switch (hd.getTrangThai()) {
-            case 0:
-                this.trangThai = "Đã thanh toán";
-                break;
-            case 1:
-                this.trangThai = "Chờ thanh toán";
-                break;
-            default:
-                this.trangThai = "Hóa đơn hủy";
-                break;
-        }
-        
+        this.trangThai = hd.getTrangThai();
     }
 
     public Object[] rowData() {
         return new Object[]{
-            this.maHD, this.ngayTao, this.tenNV, this.tenKH, this.trangThai
+            this.ma, this.ngayTao, this.tenNV, this.tenKH, this.trangThai == 0 ? "Đã thanh toán" : "Chưa thanh toán"
         };
     }
 

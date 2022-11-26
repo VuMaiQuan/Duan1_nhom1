@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class ViewCTSPReponse {
 
+    private String id;
     private String ma;
     private String tenCTSP;
     private String mauSac;
@@ -23,6 +24,7 @@ public class ViewCTSPReponse {
     private String noiSX;
 
     public ViewCTSPReponse(ChiTietSP ctsp) {
+        this.id = ctsp.getId();
         this.ma = ctsp.getMa();
         this.tenCTSP = ctsp.getSanPham().getTen() + " " + ctsp.getHang().getTen() + " " + ctsp.getDanhMuc().getTen();
         this.mauSac = ctsp.getMauSac().getTen();

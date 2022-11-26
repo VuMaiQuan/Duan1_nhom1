@@ -12,9 +12,8 @@ import javax.swing.JOptionPane;
 public class tesst {
 
     public static void main(String[] args) {
-       String a = "hdhs";
-        System.out.println(a.toUpperCase());
         
+
     }
 
 }
