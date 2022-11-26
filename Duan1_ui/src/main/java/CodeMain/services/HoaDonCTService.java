@@ -18,13 +18,13 @@ public interface HoaDonCTService {
 
     public List<ViewHoaDonCTResponse> getListAll();
 
-    public List<ViewHoaDonCTResponse> getListShowTBLAll(HoaDon hd);
-
-    public HoaDonCT getOneObj(String ma);
+    public HoaDonCT getOneObj(String id);
 
     public void save(HoaDonCT hdct) throws Exception;
 
     public void update(HoaDonCT hdct) throws Exception;
 
-    public void delete(String ma) throws Exception;
+    public void delete(String id) throws Exception;
+    
+    
 }

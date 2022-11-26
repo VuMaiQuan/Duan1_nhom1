@@ -18,22 +18,22 @@ import lombok.ToString;
 public class ViewHoaDonCTResponse {
 
     private String idHDCT;
-    private String ma;
-    private String tenSp;
+    private String maCTSP;
+    private String tenCTSP;
     private int soLuong;
     private BigDecimal donGia;
 
     public ViewHoaDonCTResponse(HoaDonCT hdct) {
         this.idHDCT = hdct.getId();
-        this.ma = hdct.getChiTietSP().getMa();
-        this.tenSp = hdct.getChiTietSP().getSanPham().getTen() + " " + hdct.getChiTietSP().getHang().getTen() + " " + hdct.getChiTietSP().getDanhMuc().getTen();
+        this.maCTSP = hdct.getChiTietSP().getMa();
+        this.tenCTSP = hdct.getChiTietSP().getSanPham().getTen() + " " + hdct.getChiTietSP().getHang().getTen() + " " + hdct.getChiTietSP().getDanhMuc().getTen();
         this.soLuong = hdct.getSoLuong();
         this.donGia = hdct.getDonGia().setScale(1);
     }
 
     public Object[] rowData() {
         return new Object[]{
-            this.ma, this.tenSp, this.soLuong, this.donGia
+            this.maCTSP, this.tenCTSP, this.soLuong, this.donGia
         };
     }
 

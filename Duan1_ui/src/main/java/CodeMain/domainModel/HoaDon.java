@@ -82,6 +82,7 @@ public class HoaDon {
         this.updatedDate = updatedDate;
         this.trangThai = trangThai;
     }
+   
 
     @Override
     public String toString() {
