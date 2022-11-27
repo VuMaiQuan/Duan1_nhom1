@@ -39,8 +39,14 @@ public class HoaDonXuat extends javax.swing.JFrame {
         hoaDonService = new HoaDonServiceImp();
         hoaDonCTService = new HoaDonCTServiceImp();
         frmBH = new FrmBanHang();
-        HoaDon hdcho = frmBH.hoaDonCho;
-        JOptionPane.showMessageDialog(this, hdcho);
+        
+        if (frmBH.getHDChoXuat == null) {
+            JOptionPane.showMessageDialog(this, "Troosng roif cu");
+        } else {
+            HoaDon hdcho = frmBH.getHDChoXuat;
+            JOptionPane.showMessageDialog(this, hdcho);
+        }
+
 //        if (hdcho.getKhachHang() != null) {
 //            txtTenKH.setText(hdcho.getKhachHang().getHoTen());
 //        }
@@ -62,7 +68,6 @@ public class HoaDonXuat extends javax.swing.JFrame {
 //                x.getSoLuong(), x.getDonGia()});
 //
 //        });
-
     }
 
     /**
@@ -100,7 +105,7 @@ public class HoaDonXuat extends javax.swing.JFrame {
         txtTenNV = new javax.swing.JLabel();
         btn_in = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         JP_HoaDon.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -241,24 +246,22 @@ public class HoaDonXuat extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(36, 36, 36)
-                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -331,7 +334,6 @@ public class HoaDonXuat extends javax.swing.JFrame {
                 if (Pi > 0) {
                     return Printable.NO_SUCH_PAGE;
                 }
-
                 Graphics2D g2 = (Graphics2D) Gr;
                 g2.translate(pf.getImageableX(), pf.getImageableY());
                 g2.scale(0.87, 1.0);
@@ -340,7 +342,6 @@ public class HoaDonXuat extends javax.swing.JFrame {
                 JP_HoaDon.print(g2);
                 return Printable.PAGE_EXISTS;
             }
-
         });
         boolean ok = job.printDialog();
         if (ok) {
