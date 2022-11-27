@@ -83,7 +83,6 @@ public class HoaDonXuat extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtTenKH = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -98,6 +97,14 @@ public class HoaDonXuat extends javax.swing.JFrame {
         txtTienMat = new javax.swing.JLabel();
         txtTienTra = new javax.swing.JLabel();
         txtTenNV = new javax.swing.JLabel();
+        Jlabel_tienMat = new javax.swing.JLabel();
+        Jlabel_Tralai = new javax.swing.JLabel();
+        Jlabel_TongTien = new javax.swing.JLabel();
+        Jlabel_nhanVien = new javax.swing.JLabel();
+        Jlabel_sale = new javax.swing.JLabel();
+        Jlabel_name = new javax.swing.JLabel();
+        Jlabel_DiaChi = new javax.swing.JLabel();
+        Jlabel_SDT = new javax.swing.JLabel();
         btn_in = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,9 +131,6 @@ public class HoaDonXuat extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel10.setText("HÓA ĐƠN BÁN HÀNG");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jLabel11.setText("Hóa đơn số:");
-
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Giảm giá:");
 
@@ -142,7 +146,7 @@ public class HoaDonXuat extends javax.swing.JFrame {
 
         tblHoaDonXuat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
+                {"HD1", "DH SS", null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
@@ -150,23 +154,34 @@ public class HoaDonXuat extends javax.swing.JFrame {
                 "Mã HD", "Tên SP", "Số Lượng", "Đơn giá"
             }
         ));
-        tblHoaDonXuat.setGridColor(new java.awt.Color(255, 255, 255));
+        tblHoaDonXuat.setGridColor(new java.awt.Color(0, 0, 0));
         tblHoaDonXuat.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tblHoaDonXuat.setShowGrid(true);
         jScrollPane2.setViewportView(tblHoaDonXuat);
+
+        Jlabel_tienMat.setText("0");
+
+        Jlabel_Tralai.setText("0");
+
+        Jlabel_TongTien.setText("0");
+
+        Jlabel_nhanVien.setText("Nhân viên");
+
+        Jlabel_sale.setText("0");
+
+        Jlabel_name.setText("Khách hàng");
+
+        Jlabel_DiaChi.setText("Hà Nội");
+
+        Jlabel_SDT.setText("09888xxx");
 
         javax.swing.GroupLayout JP_HoaDonLayout = new javax.swing.GroupLayout(JP_HoaDon);
         JP_HoaDon.setLayout(JP_HoaDonLayout);
         JP_HoaDonLayout.setHorizontalGroup(
             JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(jLabel1))
-                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addComponent(jLabel11)))
+                .addGap(261, 261, 261)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(JP_HoaDonLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
@@ -175,49 +190,61 @@ public class HoaDonXuat extends javax.swing.JFrame {
                         .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JP_HoaDonLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
+                                .addGap(8, 8, 8)
+                                .addComponent(Jlabel_TongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(JP_HoaDonLayout.createSequentialGroup()
                                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(JP_HoaDonLayout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addGap(58, 58, 58))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Jlabel_DiaChi))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
+                                        .addComponent(Jlabel_name)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 355, Short.MAX_VALUE))
+                        .addGap(0, 325, Short.MAX_VALUE))
                     .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JP_HoaDonLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addGap(30, 30, 30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Jlabel_sale, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(JP_HoaDonLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                                .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel14))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Jlabel_SDT)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTienMat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTienTra, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(402, Short.MAX_VALUE))
+                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Jlabel_tienMat, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                            .addComponent(Jlabel_Tralai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JP_HoaDonLayout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(txtTienMat, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(JP_HoaDonLayout.createSequentialGroup()
+                                .addComponent(txtTienTra, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel16)
-                                .addGap(44, 44, 44)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(106, 106, 106))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 54, Short.MAX_VALUE)
                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -229,8 +256,14 @@ public class HoaDonXuat extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addGap(213, 213, 213))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
-                        .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Jlabel_nhanVien)
+                .addGap(139, 139, 139))
         );
         JP_HoaDonLayout.setVerticalGroup(
             JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,47 +274,58 @@ public class HoaDonXuat extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11)
-                        .addGap(36, 36, 36)
-                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Jlabel_name))
                             .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Jlabel_DiaChi))
                             .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Jlabel_SDT)))
+                    .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
+                    .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(Jlabel_sale))
                     .addComponent(txtGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
+                    .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel13)
+                        .addComponent(Jlabel_TongTien))
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JP_HoaDonLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
+                        .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(Jlabel_tienMat))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(JP_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15)))
+                            .addComponent(jLabel15)
+                            .addComponent(Jlabel_Tralai)))
                     .addGroup(JP_HoaDonLayout.createSequentialGroup()
                         .addComponent(txtTienMat, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTienTra, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtTienTra, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(Jlabel_nhanVien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -393,10 +437,17 @@ public class HoaDonXuat extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JP_HoaDon;
+    private javax.swing.JLabel Jlabel_DiaChi;
+    private javax.swing.JLabel Jlabel_SDT;
+    private javax.swing.JLabel Jlabel_TongTien;
+    private javax.swing.JLabel Jlabel_Tralai;
+    private javax.swing.JLabel Jlabel_name;
+    private javax.swing.JLabel Jlabel_nhanVien;
+    private javax.swing.JLabel Jlabel_sale;
+    private javax.swing.JLabel Jlabel_tienMat;
     private javax.swing.JButton btn_in;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
