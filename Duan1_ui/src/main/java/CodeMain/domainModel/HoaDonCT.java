@@ -1,6 +1,5 @@
 package CodeMain.domainModel;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -43,7 +42,7 @@ public class HoaDonCT {
 
     private int soLuong;
 
-    private BigDecimal donGia;
+    private double donGia;
 
     private int trangThai;
 

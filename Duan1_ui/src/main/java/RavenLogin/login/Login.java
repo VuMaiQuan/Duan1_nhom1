@@ -18,7 +18,7 @@ public class Login extends PanelCustom {
     public Login() {
         initComponents();
         tkrepo = new TaiKhoanRepository();
-        list_tk = tkrepo.getList();
+        list_tk = tkrepo.getListAll();
 
     }
 

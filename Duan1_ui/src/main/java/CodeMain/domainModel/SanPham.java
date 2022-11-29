@@ -33,7 +33,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 //@ToString
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 
 public class SanPham {
@@ -58,6 +58,15 @@ public class SanPham {
 
     @OneToMany(mappedBy = "sanPham", fetch = FetchType.LAZY)
     private List<ChiTietSP> listSP = new ArrayList<>();
+
+    public SanPham(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
 
     @Override
     public String toString() {

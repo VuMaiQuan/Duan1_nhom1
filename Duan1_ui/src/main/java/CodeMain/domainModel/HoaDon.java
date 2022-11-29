@@ -1,6 +1,5 @@
 package CodeMain.domainModel;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +54,7 @@ public class HoaDon {
     private Voucher voucher;
 
     @Column(name = "tongTien")
-    private BigDecimal tongTien;
+    private double tongTien;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "createdDate")
@@ -71,7 +70,7 @@ public class HoaDon {
     @OneToMany(mappedBy = "hoaDon")//close lazy
     private List<HoaDonCT> ListHDCT = new ArrayList<>();
 
-    public HoaDon(String id, String ma, NguoiDung nguoiDung, KhachHang khachHang, Voucher voucher, BigDecimal tongTien, Date createdDate, Date updatedDate, int trangThai) {
+    public HoaDon(String id, String ma, NguoiDung nguoiDung, KhachHang khachHang, Voucher voucher, double tongTien, Date createdDate, Date updatedDate, int trangThai) {
         this.id = id;
         this.ma = ma;
         this.nguoiDung = nguoiDung;

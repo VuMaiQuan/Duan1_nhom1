@@ -2,8 +2,17 @@ package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
 import CodeMain.domainModel.ChiTietSP;
+import CodeMain.domainModel.DanhMuc;
+import CodeMain.domainModel.Hang;
+import CodeMain.domainModel.MatKinh;
+import CodeMain.domainModel.MauSac;
+import CodeMain.domainModel.NoiSX;
+import CodeMain.domainModel.SanPham;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.hibernate.Session;
@@ -49,7 +58,6 @@ public class CTSPRepository {
             try {
                 s.saveOrUpdate(ctsp);
                 trans.commit();
-               
                 s.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -70,7 +78,7 @@ public class CTSPRepository {
                 qr.setParameter("ma", ma);
                 qr.executeUpdate();
                 trans.commit();
-                
+
                 s.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -85,8 +93,23 @@ public class CTSPRepository {
 
     public static void main(String[] args) {
         CTSPRepository ctsp = new CTSPRepository();
-        for (var x : ctsp.getListAll()) {
-            System.out.println(x);
+//        for (var x : ctsp.getListAll()) {
+//            System.out.println(x);
+//        }
+        Session s = HibernateUtil.getFactory().openSession();
+        SanPham sp = s.get(SanPham.class, "17AE886E-F066-4EEC-A204-2454AD772206");
+        DanhMuc dm = s.get(DanhMuc.class, "7907C782-60EF-4996-B195-51D28B29D63A");
+        MauSac ms = s.get(MauSac.class, "BF5B2B71-3152-45F6-B70D-72D3B09E50CA");
+        MatKinh mk = s.get(MatKinh.class, "3ECA6E0C-888A-4888-9AD7-82D7CCCA94F5");
+        NoiSX nsx = s.get(NoiSX.class, "4F746BEC-C514-4053-9031-0223A9AFE565");
+        Hang h = s.get(Hang.class, "E3AD0E43-0885-40A3-9B7A-580F2946CA82");
+        s.close();
+        ChiTietSP ct = new ChiTietSP(null, "ctsp5", sp, nsx, h, ms, mk, dm, null, 0, "hfd", 0, 0, new Date(), null, false);
+        try {
+            ctsp.create(ct);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Logger.getLogger(CTSPRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

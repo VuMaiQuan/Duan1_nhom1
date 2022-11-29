@@ -45,6 +45,7 @@ public class PanelMenu extends JComponent {
         add(panelMenu);
         ///test bán hàng nhanh
         addMenu("Bán Hàng");
+        addMenu("Bán Hàng 2");
         addMenu("Quản lí Hóa đơn");
         //
         lg = new Login();

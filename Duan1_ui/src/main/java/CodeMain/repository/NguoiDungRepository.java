@@ -6,6 +6,7 @@ package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
 import CodeMain.domainModel.NguoiDung;
+import CodeMain.domainModel.NguoiDung;
 import CodeMain.domainModel.TaiKhoan;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,27 +21,25 @@ import org.hibernate.Transaction;
  */
 public class NguoiDungRepository {
 
-    private final Session s = HibernateUtil.getFactory().openSession();
-
-    public List<NguoiDung> getList() {
+    public List<NguoiDung> getListAll() {
         List<NguoiDung> list = new ArrayList<>();
-        try {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
             TypedQuery<NguoiDung> qr = s.createQuery("from NguoiDung");
             list = qr.getResultList();
             s.close();
             return list;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }
 
     public NguoiDung getOneNguoiDung(String ma) {
         NguoiDung nd;
-        try {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
             Query qr = s.createQuery("from NguoiDung where ma=:ma", NguoiDung.class);
             qr.setParameter("ma", ma);
             nd = (NguoiDung) qr.getSingleResult();
+            //tat tam close 
             s.close();
             return nd;
         } catch (Exception e) {
@@ -50,46 +49,49 @@ public class NguoiDungRepository {
     }
 
     public void create(NguoiDung nd) throws Exception {
-        Transaction trans = s.getTransaction();
-        try {
-            trans.begin();
-            s.saveOrUpdate(nd);
-            trans.commit();
-            s.close();
+
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction trans = s.beginTransaction();
+            try {
+                s.saveOrUpdate(nd);
+                trans.commit();
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                trans.rollback();
+                throw e;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();;
             throw e;
         }
     }
 
     public void delete(String ma) throws Exception {
-        Transaction trans = s.getTransaction();
-        try {
-            trans.begin();
-            Query qr = s.createQuery("delete from NguoiDung where ma=:ma");
-            qr.setParameter("ma", ma);
-            qr.executeUpdate();
-            trans.commit();
-            s.close();
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction trans = s.beginTransaction();
+            try {
+                Query qr = s.createQuery("delete from NguoiDung where ma=:ma");
+                qr.setParameter("ma", ma);
+                qr.executeUpdate();
+                trans.commit();
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                trans.rollback();
+                throw e;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();;
             throw e;
         }
     }
 
     public static void main(String[] args) {
-        NguoiDungRepository nd = new NguoiDungRepository();
-//        for (var x : nd.getList()) {
-//            System.out.println(x);
-//        }
-        NguoiDung a = nd.getOneNguoiDung("nd1");
-        List<TaiKhoan> tk = a.getListTaiKhoan();
-        for (TaiKhoan x : tk) {
+        NguoiDungRepository hd = new NguoiDungRepository();
+        hd.getListAll().forEach(x -> {
             System.out.println(x);
-        }
+        });
 
-        //System.out.println(a);
     }
 }

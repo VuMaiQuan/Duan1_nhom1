@@ -29,7 +29,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class MatKinh {
     @Id
@@ -50,6 +50,15 @@ public class MatKinh {
     
     @OneToMany(mappedBy="matKinh")
     private List<ChiTietSP> ListCTSP= new ArrayList<>();
+
+    public MatKinh(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
 
     @Override
     public String toString() {

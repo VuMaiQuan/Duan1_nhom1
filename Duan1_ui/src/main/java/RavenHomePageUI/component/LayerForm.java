@@ -6,6 +6,7 @@ import CodeMain.view.Form_chucNang.FRMQLSanPham;
 import CodeMain.view.Form_chucNang.FRMThongKe;
 import CodeMain.view.Form_chucNang.FRMThongtincanhan;
 import CodeMain.view.Form_chucNang.FrmBanHang;
+import CodeMain.view.Form_chucNang.FrmBanHang2;
 import CodeMain.view.Form_chucNang.FrmHoaDon;
 import CodeMain.view.Form_chucNang.FrmKhuyenMai;
 import java.awt.Color;
@@ -87,7 +88,8 @@ public class LayerForm extends JLayeredPane {
                             setVisibleMenu(false);
                             break;
                         case 1:
-                            form.showForm(new FRMQLSanPham());
+                            form.showForm(new FrmBanHang2());
+//                            form.showForm(new FRMQLSanPham());
                             setVisibleMenu(false);
                             break;
                         case 2:

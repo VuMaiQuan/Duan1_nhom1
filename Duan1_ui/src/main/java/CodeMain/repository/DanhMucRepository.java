@@ -1,8 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
-import CodeMain.domainModel.TaiKhoan;
-import CodeMain.domainModel.TaiKhoan;
+import CodeMain.domainModel.DanhMuc;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -10,12 +13,16 @@ import javax.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class TaiKhoanRepository {
+/**
+ *
+ * @author hungs
+ */
+public class DanhMucRepository {
 
-    public List<TaiKhoan> getListAll() {
-        List<TaiKhoan> list = new ArrayList<>();
+    public List<DanhMuc> getListAll() {
+        List<DanhMuc> list = new ArrayList<>();
         try ( Session s = HibernateUtil.getFactory().openSession()) {
-            TypedQuery<TaiKhoan> qr = s.createQuery("from TaiKhoan");
+            TypedQuery<DanhMuc> qr = s.createQuery("from DanhMuc");
             list = qr.getResultList();
             s.close();
             return list;
@@ -24,12 +31,12 @@ public class TaiKhoanRepository {
         }
     }
 
-    public TaiKhoan getOneTaiKhoan(String ma) {
-        TaiKhoan nd;
+    public DanhMuc getOneDanhMuc(String ma) {
+        DanhMuc nd;
         try ( Session s = HibernateUtil.getFactory().openSession()) {
-            Query qr = s.createQuery("from TaiKhoan where ma=:ma", TaiKhoan.class);
+            Query qr = s.createQuery("from DanhMuc where ma=:ma", DanhMuc.class);
             qr.setParameter("ma", ma);
-            nd = (TaiKhoan) qr.getSingleResult();
+            nd = (DanhMuc) qr.getSingleResult();
             //tat tam close 
             s.close();
             return nd;
@@ -39,7 +46,7 @@ public class TaiKhoanRepository {
         }
     }
 
-    public void create(TaiKhoan nd) throws Exception {
+    public void create(DanhMuc nd) throws Exception {
 
         try ( Session s = HibernateUtil.getFactory().openSession()) {
             Transaction trans = s.beginTransaction();
@@ -62,7 +69,7 @@ public class TaiKhoanRepository {
         try ( Session s = HibernateUtil.getFactory().openSession()) {
             Transaction trans = s.beginTransaction();
             try {
-                Query qr = s.createQuery("delete from TaiKhoan where ma=:ma");
+                Query qr = s.createQuery("delete from DanhMuc where ma=:ma");
                 qr.setParameter("ma", ma);
                 qr.executeUpdate();
                 trans.commit();
@@ -79,7 +86,7 @@ public class TaiKhoanRepository {
     }
 
     public static void main(String[] args) {
-        TaiKhoanRepository hd = new TaiKhoanRepository();
+        DanhMucRepository hd = new DanhMucRepository();
         hd.getListAll().forEach(x -> {
             System.out.println(x);
         });

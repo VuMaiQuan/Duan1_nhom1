@@ -31,7 +31,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 //@ToString
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class DanhMuc {
 
@@ -56,6 +56,16 @@ public class DanhMuc {
     @OneToMany(mappedBy = "danhMuc")
     private List<ChiTietSP> listCTSP = new ArrayList<>();
 
+    public DanhMuc(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
+
+    
     @Override
     public String toString() {
         return "DanhMuc{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';

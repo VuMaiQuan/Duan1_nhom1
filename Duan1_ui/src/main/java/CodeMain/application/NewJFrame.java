@@ -4,7 +4,11 @@
  */
 package CodeMain.application;
 
+import CodeMain.domainModel.DanhMuc;
+import CodeMain.services.DanhMucService;
+import CodeMain.services.serviceImp.DanhMucServiceImp;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,9 +19,26 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    DefaultTableModel dtm;
+    DanhMucService dm;
+
     public NewJFrame() {
         initComponents();
+        //dtm = (DefaultTableModel) tblBang.getModel();
+        dm = new DanhMucServiceImp();
+       // setbang();
+        
+        
     }
+
+//    void setbang() {
+//        dtm.setRowCount(0);
+//        for (DanhMuc x : dm.getListAll()) {
+//            dtm.addRow(new Object[]{
+//                x.getMa(), x.getTen()
+//            });
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,51 +49,21 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btncheck = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btncheck.setText("jButton1");
-        btncheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncheckActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(btncheck, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(btncheck)
-                .addContainerGap(254, Short.MAX_VALUE))
+            .addGap(0, 644, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btncheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncheckActionPerformed
-        // TODO add your handling code here:
-        String a = JOptionPane.showInputDialog(this, "mời nhập");
-        if(a!=null){
-            try {
-                int sl = Integer.parseInt(a);
-                System.out.println(a);
-            } catch (Exception e) {
-                System.out.println("a kp là số");
-            }
-        }
-        
-       
-    }//GEN-LAST:event_btncheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +101,5 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btncheck;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
 package CodeMain.repository;
 
 import CodeMain.Config.HibernateUtil;
+import CodeMain.domainModel.NoiSX;
+import CodeMain.domainModel.Voucher;
 import CodeMain.domainModel.Voucher;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +21,10 @@ import org.hibernate.Transaction;
  */
 public class VoucherRepository {
 
-    private final Session s = HibernateUtil.getFactory().openSession();
-
-    public List<Voucher> getList() {
+   
+    public List<Voucher> getListAll() {
         List<Voucher> list = new ArrayList<>();
-        try {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
             TypedQuery<Voucher> qr = s.createQuery("from Voucher");
             list = qr.getResultList();
             s.close();
@@ -35,10 +36,11 @@ public class VoucherRepository {
 
     public Voucher getOneVoucher(String ma) {
         Voucher nd;
-        try {
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
             Query qr = s.createQuery("from Voucher where ma=:ma", Voucher.class);
             qr.setParameter("ma", ma);
             nd = (Voucher) qr.getSingleResult();
+            //tat tam close 
             s.close();
             return nd;
         } catch (Exception e) {
@@ -48,39 +50,49 @@ public class VoucherRepository {
     }
 
     public void create(Voucher nd) throws Exception {
-        Transaction trans = s.getTransaction();
-        try {
-            trans.begin();
-            s.saveOrUpdate(nd);
-            trans.commit();
-            s.close();
+
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction trans = s.beginTransaction();
+            try {
+                s.saveOrUpdate(nd);
+                trans.commit();
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                trans.rollback();
+                throw e;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();;
             throw e;
         }
     }
 
     public void delete(String ma) throws Exception {
-        Transaction trans = s.getTransaction();
-        try {
-            trans.begin();
-            Query qr = s.createQuery("delete from Voucher where ma=:ma");
-            qr.setParameter("ma", ma);
-            qr.executeUpdate();
-            trans.commit();
-            s.close();
+        try ( Session s = HibernateUtil.getFactory().openSession()) {
+            Transaction trans = s.beginTransaction();
+            try {
+                Query qr = s.createQuery("delete from Voucher where ma=:ma");
+                qr.setParameter("ma", ma);
+                qr.executeUpdate();
+                trans.commit();
+                s.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                trans.rollback();
+                throw e;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            trans.rollback();;
             throw e;
         }
     }
 
     public static void main(String[] args) {
-        VoucherRepository vc = new VoucherRepository();
-        for (var x : vc.getList()) {
+        VoucherRepository hd = new VoucherRepository();
+        hd.getListAll().forEach(x -> {
             System.out.println(x);
-        }
+        });
+
     }
 }

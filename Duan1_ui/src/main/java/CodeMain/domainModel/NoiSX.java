@@ -21,7 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "NoiSX")
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class NoiSX {
 
@@ -43,6 +43,15 @@ public class NoiSX {
 
     @OneToMany(mappedBy = "noiSX",fetch = FetchType.LAZY)
     private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    public NoiSX(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
 
     @Override
     public String toString() {

@@ -40,10 +40,10 @@ public class HoaDonXuat extends javax.swing.JFrame {
         hoaDonCTService = new HoaDonCTServiceImp();
         frmBH = new FrmBanHang();
         
-        if (frmBH.getHDChoXuat == null) {
+        if (frmBH.getHD() == null) {
             JOptionPane.showMessageDialog(this, "Troosng roif cu");
         } else {
-            HoaDon hdcho = frmBH.getHDChoXuat;
+            HoaDon hdcho = frmBH.getHD();
             JOptionPane.showMessageDialog(this, hdcho);
         }
 

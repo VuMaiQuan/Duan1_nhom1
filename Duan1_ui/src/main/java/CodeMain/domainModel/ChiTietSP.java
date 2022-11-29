@@ -1,6 +1,5 @@
 package CodeMain.domainModel;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "CTSP")
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class ChiTietSP {
 
@@ -72,7 +71,7 @@ public class ChiTietSP {
 
     private String moTa;
 
-    private BigDecimal donGia;
+    private double donGia;
 
     private int soLuong;
 
@@ -87,10 +86,28 @@ public class ChiTietSP {
     @OneToMany(mappedBy = "chiTietSP", fetch = FetchType.LAZY)
     private List<HoaDonCT> ListHDCT = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "ChiTietSP{" + "id=" + id + ", ma=" + ma + ", sanPham=" + sanPham + ", noiSX=" + noiSX + ", hang=" + hang + ", mauSac=" + mauSac + ", matKinh=" + matKinh + ", danhMuc=" + danhMuc + ", image=" + image + ", namBH=" + namBH + ", moTa=" + moTa + ", donGia=" + donGia + ", soLuong=" + soLuong + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted +  '}';
+    public ChiTietSP(String id, String ma, SanPham sanPham, NoiSX noiSX, Hang hang, MauSac mauSac, MatKinh matKinh, DanhMuc danhMuc, String image, int namBH, String moTa, double donGia, int soLuong, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.sanPham = sanPham;
+        this.noiSX = noiSX;
+        this.hang = hang;
+        this.mauSac = mauSac;
+        this.matKinh = matKinh;
+        this.danhMuc = danhMuc;
+        this.image = image;
+        this.namBH = namBH;
+        this.moTa = moTa;
+        this.donGia = donGia;
+        this.soLuong = soLuong;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
     }
 
-    
+    @Override
+    public String toString() {
+        return "ChiTietSP{" + "id=" + id + ", ma=" + ma + ", sanPham=" + sanPham + ", noiSX=" + noiSX + ", hang=" + hang + ", mauSac=" + mauSac + ", matKinh=" + matKinh + ", danhMuc=" + danhMuc + ", image=" + image + ", namBH=" + namBH + ", moTa=" + moTa + ", donGia=" + donGia + ", soLuong=" + soLuong + ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", deleted=" + deleted + '}';
+    }
+
 }

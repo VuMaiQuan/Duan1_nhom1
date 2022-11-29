@@ -30,7 +30,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 //@ToString
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class Hang {
 
@@ -52,6 +52,15 @@ public class Hang {
 
     @OneToMany(mappedBy = "hang")
     private List<ChiTietSP> listCTSP = new ArrayList<>();
+
+    public Hang(String id, String ma, String ten, Date createdDate, Date updatedDate, boolean deleted) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+    }
 
     @Override
     public String toString() {
