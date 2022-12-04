@@ -24,7 +24,7 @@ public class CTSPServiceImp implements CTSPService {
     }
 
     @Override
-    public List<ViewCTSPReponse> getListAll() {
+    public List<ViewCTSPReponse> getListRes() {
         listCTSP = ctspRepo.getListAll();
         List<ViewCTSPReponse> list = new ArrayList<>();
         for (ChiTietSP x : listCTSP) {
@@ -72,14 +72,14 @@ public class CTSPServiceImp implements CTSPService {
     public static void main(String[] args) {
         CTSPServiceImp c = new CTSPServiceImp();
 
-        for (ViewCTSPReponse x : c.getListAll()) {
+        for (ViewCTSPReponse x : c.getListRes()) {
             System.out.println(x);
         }
 
     }
 
     @Override
-    public List<ViewCTSPReponse> getListCustom(String text) {
+    public List<ViewCTSPReponse> getListFind(String text) {
         List<ViewCTSPReponse> list = new ArrayList<>();
         for (ChiTietSP x : ctspRepo.getListAll()) {
             if (x.getMa().toLowerCase().contains(text.toLowerCase()) || x.getHang().getTen().toLowerCase().contains(text.toLowerCase())) {
@@ -87,6 +87,11 @@ public class CTSPServiceImp implements CTSPService {
             }
         }
         return list;
+    }
+
+    @Override
+    public List<ChiTietSP> getListAll() {
+        return ctspRepo.getListAll();
     }
 
 }

@@ -23,7 +23,7 @@ public class HoaDonServiceImp implements HoaDonService {
     }
 
     @Override
-    public List<ViewHoaDonResponse> getListAll() {
+    public List<ViewHoaDonResponse> getListRes() {
         listHD = hdRepository.getListAll();
         List<ViewHoaDonResponse> list = new ArrayList<>();
         for (HoaDon x : listHD) {
@@ -31,8 +31,11 @@ public class HoaDonServiceImp implements HoaDonService {
         }
         return list.isEmpty() ? null : list;
     }
-    
-    
+
+    @Override
+    public List<HoaDon> getListAll() {
+        return hdRepository.getListAll();
+    }
 
     @Override
     public HoaDon getOneObj(String ma) {
@@ -69,23 +72,12 @@ public class HoaDonServiceImp implements HoaDonService {
             throw e;
         }
     }
-    
-    //thêm getall kiẻue hoadon
-    @Override
-    public List<HoaDon> getListDomailHoaDon() {
-       return hdRepository.getListAll();
-    }
-   
 
     public static void main(String[] args) {
         HoaDonServiceImp hd = new HoaDonServiceImp();
-        hd.getListDomailHoaDon().forEach(x
-                -> {
+        hd.getListRes().forEach(x -> {
             System.out.println(x);
-        }
-        );
+        });
     }
-
-    
 
 }

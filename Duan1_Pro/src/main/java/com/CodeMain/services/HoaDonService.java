@@ -14,9 +14,9 @@ import java.util.List;
  */
 public interface HoaDonService {
 
-    public List<ViewHoaDonResponse> getListAll();
+    public List<ViewHoaDonResponse> getListRes();
 
-    public List<HoaDon> getListDomailHoaDon();
+    public List<HoaDon> getListAll();
 
     public HoaDon getOneObj(String ma);
 

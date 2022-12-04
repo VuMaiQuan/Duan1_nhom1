@@ -1,6 +1,10 @@
 package com.CodeMain.Response;
 
 import com.CodeMain.domainModel.HoaDonCT;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,8 +35,11 @@ public class ViewHoaDonCTResponse {
     }
 
     public Object[] rowData() {
+//        DecimalFormat df = new DecimalFormat("#,###.0");
+        Locale lc = new Locale("nv", "VN");
+        NumberFormat nf = NumberFormat.getInstance(lc);
         return new Object[]{
-            this.maCTSP, this.tenCTSP, this.soLuong, String.format("%.1f", this.donGia)
+            this.maCTSP, this.tenCTSP, this.soLuong, nf.format(new BigDecimal(this.donGia))+" đ"
         };
     }
 

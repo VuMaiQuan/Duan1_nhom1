@@ -23,7 +23,7 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
     }
 
     @Override
-    public List<ViewHoaDonCTResponse> getListAll() {
+    public List<ViewHoaDonCTResponse> getListRes() {
         List<ViewHoaDonCTResponse> list = new ArrayList<>();
         for (HoaDonCT x : hdctRepository.getListAll()) {
             list.add(new ViewHoaDonCTResponse(x));
@@ -69,7 +69,7 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
 
     public static void main(String[] args) {
         HoaDonCTServiceImp hd = new HoaDonCTServiceImp();
-        for (ViewHoaDonCTResponse x : hd.getListAll()) {
+        for (ViewHoaDonCTResponse x : hd.getListRes()) {
             System.out.println(x);
         }
     }
@@ -86,4 +86,9 @@ public class HoaDonCTServiceImp implements HoaDonCTService {
 //        }
 //
 //    }
+
+    @Override
+    public List<HoaDonCT> getListAll() {
+        return hdctRepository.getListAll();
+    }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.CodeMain.view.Form_chucNang;
+package com.CodeMain.view.Form_chucNang.FRM_HoTro;
 
 import com.CodeMain.domainModel.HoaDon;
 import com.CodeMain.domainModel.HoaDonCT;
@@ -11,13 +11,16 @@ import com.CodeMain.services.HoaDonCTService;
 import com.CodeMain.services.HoaDonService;
 import com.CodeMain.services.serviceImp.HoaDonCTServiceImp;
 import com.CodeMain.services.serviceImp.HoaDonServiceImp;
+import com.CodeMain.view.Form_chucNang.FrmBanHang;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,6 +34,9 @@ public class HoaDonXuat extends javax.swing.JFrame {
     HoaDonService hoaDonService;
     HoaDonCTService hoaDonCTService;
     HoaDon hoaDonX;
+
+    Locale lc = new Locale("nv", "VN");
+    NumberFormat nf = NumberFormat.getInstance(lc);
 
     public HoaDonXuat() {
         initComponents();
@@ -60,7 +66,7 @@ public class HoaDonXuat extends javax.swing.JFrame {
             txtDiaChi.setText("");
             txtSDT.setText("");
         }
-        txtTongTien.setText(String.format("%.1f", hoaDonX.getTongTien()));
+        txtTongTien.setText(nf.format(hoaDonX.getTongTien()) + " đ");
         txtTenNV.setText(hoaDonX.getNguoiDung().getHoTen());
         List<HoaDonCT> hdct = hoaDonX.getListHDCT();
 
@@ -68,7 +74,7 @@ public class HoaDonXuat extends javax.swing.JFrame {
                 -> {
             dtm.addRow(new Object[]{x.getChiTietSP().getMa(),
                 x.getChiTietSP().getSanPham().getTen() + " " + x.getChiTietSP().getHang().getTen() + " " + x.getChiTietSP().getDanhMuc().getTen(),
-                x.getSoLuong(), String.format("%.1f", x.getDonGia())});
+                x.getSoLuong(), nf.format(x.getDonGia())});
         }
         );
     }

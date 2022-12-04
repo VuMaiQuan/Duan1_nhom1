@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface CTSPService {
 
-    public List<ViewCTSPReponse> getListAll();
-    
-    public List<ViewCTSPReponse> getListCustom(String text);
+    public List<ViewCTSPReponse> getListRes();
+
+    public List<ViewCTSPReponse> getListFind(String text);
+
+    public List<ChiTietSP> getListAll();
 
     public ChiTietSP getOneObj(String ma);
 

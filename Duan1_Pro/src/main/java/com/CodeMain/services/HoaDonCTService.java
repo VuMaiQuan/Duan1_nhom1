@@ -16,7 +16,9 @@ import java.util.List;
  */
 public interface HoaDonCTService {
 
-    public List<ViewHoaDonCTResponse> getListAll();
+    public List<ViewHoaDonCTResponse> getListRes();
+    
+    public List<HoaDonCT> getListAll();
 
     public HoaDonCT getOneObj(String id);
 

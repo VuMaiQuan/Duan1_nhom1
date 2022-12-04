@@ -1,6 +1,7 @@
 package com.CodeMain.Response;
 
 import com.CodeMain.domainModel.HoaDon;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,8 +39,17 @@ public class ViewHoaDonResponse {
     }
 
     public Object[] rowData() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String TT = "";
+        if (this.trangThai == 0) {
+            TT = "Chưa thanh toán";
+        } else if (this.trangThai == 1) {
+            TT = "Đã thanh toán";
+        } else {
+            TT = "Hóa đơn hủy";
+        }
         return new Object[]{
-            this.ma, this.ngayTao, this.tenNV, this.tenKH, this.trangThai == 0 ? "Đã thanh toán" : "Chưa thanh toán"
+            this.ma, sdf.format(this.ngayTao), this.tenNV, this.tenKH, TT
         };
     }
 

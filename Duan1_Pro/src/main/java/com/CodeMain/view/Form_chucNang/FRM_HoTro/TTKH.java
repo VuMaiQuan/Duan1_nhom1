@@ -4,9 +4,16 @@
  */
 package com.CodeMain.view.Form_chucNang.FRM_HoTro;
 
+import com.CodeMain.domainModel.HoaDon;
 import com.CodeMain.domainModel.KhachHang;
+import com.CodeMain.services.HoaDonCTService;
+import com.CodeMain.services.HoaDonService;
 import com.CodeMain.services.KhachHangService;
+import com.CodeMain.services.serviceImp.HoaDonCTServiceImp;
+import com.CodeMain.services.serviceImp.HoaDonServiceImp;
 import com.CodeMain.services.serviceImp.KhachHangServiceImp;
+import com.CodeMain.view.Form_chucNang.FrmBanHang;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,18 +21,22 @@ import javax.swing.table.DefaultTableModel;
  * @author hungs
  */
 public class TTKH extends javax.swing.JFrame {
-    
+
     KhachHangService KHService;
     DefaultTableModel dtm;
-    
+    HoaDonService hoaDonService;
+    FrmBanHang frmBH;
+
     public TTKH() {
         initComponents();
         this.setLocationRelativeTo(null);
         KHService = new KhachHangServiceImp();
         dtm = (DefaultTableModel) tblBangKH.getModel();
+        frmBH = new FrmBanHang();
+        hoaDonService = new HoaDonServiceImp();
         loadTable();
     }
-    
+
     void loadTable() {
         dtm.setRowCount(0);
         KHService.getListAll().forEach(x -> {
@@ -108,14 +119,27 @@ public class TTKH extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
-        // TODO add your handling code here:
+        HoaDon hd = FrmBanHang.hoaDonCho;
+        if (hd != null) {
+            hd.setKhachHang(KHChon);
+            frmBH.updateHoaDon(hd);
+            this.dispose();
+            JOptionPane.showMessageDialog(frmBH, "Thay đổi khách hàng thành công");
+            hoaDonService.getListRes().forEach(x -> {
+                System.out.println(x);
+            });
+//            frmBH.loadTableHoaDon(hoaDonService.getListRes());
+        }
     }//GEN-LAST:event_btnChonActionPerformed
-    public static KhachHang KHChon = null;
+    public KhachHang KHChon = null;
+
+    int rowCLbang = -1;
     private void tblBangKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangKHMouseClicked
         // TODO add your handling code here:
-        int rowCL = tblBangKH.getSelectedRow();
-        String ma = tblBangKH.getModel().getValueAt(rowCL, 0).toString();
+        rowCLbang = tblBangKH.getSelectedRow();
+        String ma = tblBangKH.getModel().getValueAt(rowCLbang, 0).toString();
         KHChon = KHService.getOneObj(ma);
         lblTenkh.setText(KHChon.getHoTen());
     }//GEN-LAST:event_tblBangKHMouseClicked

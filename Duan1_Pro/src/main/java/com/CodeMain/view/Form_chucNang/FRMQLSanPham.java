@@ -77,7 +77,7 @@ public class FRMQLSanPham extends javax.swing.JPanel {
         _HangServiceImp = new HangServiceImp();
         _SanPhamServiceImp = new SanPhamServiceImp();
 
-        listctsp = _CTSPServiceImp.getListAll();
+        listctsp = _CTSPServiceImp.getListRes();
         listSp = _SanPhamServiceImp.getListAll();
         listNSX = _NoiSXServiceImp.getListAll();
         listms = _MauSacServiceImp.getListAll();
@@ -413,7 +413,7 @@ public class FRMQLSanPham extends javax.swing.JPanel {
     public void LoadTable() {
         _Model = (DefaultTableModel) tblDSCTSP.getModel();
         _Model.setRowCount(0);
-        for (ViewCTSPReponse o : _CTSPServiceImp.getListAll()) {
+        for (ViewCTSPReponse o : _CTSPServiceImp.getListRes()) {
             _Model.addRow(new Object[]{
                 o.getMa(), o.getTenCTSP(), o.getMauSac(), o.getNoiSX(), o.getMatKinh(), o.getDonGia(), o.getSoLuong(), o.getNamBH()
             });

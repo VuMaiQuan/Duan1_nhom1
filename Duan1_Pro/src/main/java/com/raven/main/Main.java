@@ -35,8 +35,8 @@ public class Main extends javax.swing.JFrame {
         init();
         chiTietSPService = new CTSPServiceImp();
         hoaDonService = new HoaDonServiceImp();
-        _loadCTSP = chiTietSPService.getListAll();
-        _loadHd = hoaDonService.getListAll();
+        _loadCTSP = chiTietSPService.getListRes();
+        _loadHd = hoaDonService.getListRes();
     }
 
     // fixx delay

@@ -8,6 +8,8 @@ import com.CodeMain.domainModel.DanhMuc;
 import com.CodeMain.services.DanhMucService;
 import com.CodeMain.services.serviceImp.DanhMucServiceImp;
 import com.CodeMain.view.Form_chucNang.DangNhap;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,11 +24,15 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     DefaultTableModel dtm;
     DanhMucService dm;
+    DecimalFormat df = new DecimalFormat("#,###");
+    double a = 19999999.889;
 
     public NewJFrame() {
         initComponents();
-        
-
+//        txtText.setText(df.format(new BigDecimal(a)));
+        txtText.setEditable(false);
+        txtText.setOpaque(true);
+        txtText.setBorder(null);
     }
 
 //    void setbang() {
@@ -46,8 +52,8 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtTenND = new javax.swing.JLabel();
         btncheck = new javax.swing.JButton();
+        txtText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,19 +71,19 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(txtTenND, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(240, 240, 240)
-                        .addComponent(btncheck, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(206, Short.MAX_VALUE))
+                        .addComponent(btncheck, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(txtText, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(txtTenND, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(40, 40, 40)
+                .addComponent(txtText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(btncheck)
                 .addContainerGap(121, Short.MAX_VALUE))
         );
@@ -87,13 +93,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void btncheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncheckActionPerformed
         // TODO add your handling code here:
-        int dx = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn đăng xuất", "Đăng xuất", 1);
-        if (dx == 0) {
-            System.out.println("bạn chọn0");
-        } else {
-            System.out.println("SỐ kahsc 0");
+//        String texxt = txtTenND.getText();
+//        double db =Double.parseDouble(texxt);
+//        BigDecimal a = BigDecimal.valueOf(texxt);
+        System.out.println(a);
     }//GEN-LAST:event_btncheckActionPerformed
-    }
 
     /**
      * @param args the command line arguments
@@ -109,16 +113,24 @@ public class NewJFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -132,6 +144,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncheck;
-    private javax.swing.JLabel txtTenND;
+    private javax.swing.JTextField txtText;
     // End of variables declaration//GEN-END:variables
 }
