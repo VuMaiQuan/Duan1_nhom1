@@ -29,7 +29,7 @@ public class HoaDonRepository {
     public List<HoaDon> getListAll() {
         List<HoaDon> list = new ArrayList<>();
         try ( Session s = HibernateUtil.getFactory().openSession()) {
-            TypedQuery<HoaDon> qr = s.createQuery("from HoaDon");
+            TypedQuery<HoaDon> qr = s.createQuery("from HoaDon order by ma");
             list = qr.getResultList();
             s.close();
             return list;
@@ -101,10 +101,10 @@ public class HoaDonRepository {
         HoaDonRepository hd = new HoaDonRepository();
         HoaDon hoad = hd.getOneHoaDon("hd1");
        
-       
-        hd.getListHDCT(hoad).forEach(x->{
-             System.out.println(x);
-        });
+//       
+//        hd.getListHDCT(hoad).forEach(x->{
+//             System.out.println(x);
+//        });
       
 
         // HoaDon hoad = new HoaDon(null, "hd4", Login.ndLogin, null, null, new BigDecimal(0), new Date(), new Date(), 1);
@@ -114,9 +114,9 @@ public class HoaDonRepository {
 //            e.printStackTrace();
 //
 //        }
-//        for (var x : hd.getListAll()) {
-//            System.out.println(x);
-//        }
+        for (var x : hd.getListAll()) {
+            System.out.println(x);
+        }
 //        System.out.println("");
         //    System.out.println(hd.getOneHoaDon("hd0"));
     }

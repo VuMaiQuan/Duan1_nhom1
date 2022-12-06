@@ -126,14 +126,11 @@ public class TTKH extends javax.swing.JFrame {
             hd.setKhachHang(KHChon);
             frmBH.updateHoaDon(hd);
             this.dispose();
-            JOptionPane.showMessageDialog(frmBH, "Thay đổi khách hàng thành công");
-            hoaDonService.getListRes().forEach(x -> {
-                System.out.println(x);
-            });
-//            frmBH.loadTableHoaDon(hoaDonService.getListRes());
         }
+        rowCLbang = -1;
+
     }//GEN-LAST:event_btnChonActionPerformed
-    public KhachHang KHChon = null;
+    public static KhachHang KHChon = null;
 
     int rowCLbang = -1;
     private void tblBangKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBangKHMouseClicked
