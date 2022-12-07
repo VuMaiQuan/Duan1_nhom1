@@ -889,7 +889,7 @@
                   <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                   <Component id="btnRemoveOne" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnRemoveOne1" min="-2" max="-2" attributes="0"/>
+                  <Component id="bntRemoveAll" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -901,7 +901,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnRemoveOne" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnRemoveOne1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bntRemoveAll" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -970,7 +970,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnRemoveOne1">
+        <Component class="javax.swing.JButton" name="bntRemoveAll">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -978,7 +978,7 @@
             <Property name="text" type="java.lang.String" value="xo&#xe1; t&#x1ea5;t c&#x1ea3;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveOne1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntRemoveAllActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

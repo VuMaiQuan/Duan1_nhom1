@@ -1,6 +1,5 @@
 package com.raven.main;
 
-import CodeMain.view.Form_chucNang.FrmKhuyenMai;
 import com.CodeMain.Response.ViewCTSPReponse;
 import com.CodeMain.Response.ViewHoaDonResponse;
 import com.CodeMain.domainModel.ChiTietSP;
@@ -75,7 +74,7 @@ public class Main extends javax.swing.JFrame {
                 formMain1.showForm(new FrmHoaDon());
                 break;
             case 3:
-                formMain1.showForm(new FrmKhuyenMai());
+//                formMain1.showForm();
                 break;
             case 4:
                 formMain1.showForm(new FRMThongKe());

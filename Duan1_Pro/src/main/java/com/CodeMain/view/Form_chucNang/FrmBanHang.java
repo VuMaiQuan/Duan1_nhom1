@@ -41,6 +41,7 @@ import java.util.Set;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.Utilities;
 
@@ -281,7 +282,7 @@ public class FrmBanHang extends javax.swing.JPanel {
         btnRemoveOne = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblGioHang = new javax.swing.JTable();
-        btnRemoveOne1 = new javax.swing.JButton();
+        bntRemoveAll = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), " Hóa Đơn Chờ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -738,11 +739,11 @@ public class FrmBanHang extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(tblGioHang);
 
-        btnRemoveOne1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnRemoveOne1.setText("xoá tất cả");
-        btnRemoveOne1.addActionListener(new java.awt.event.ActionListener() {
+        bntRemoveAll.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bntRemoveAll.setText("xoá tất cả");
+        bntRemoveAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveOne1ActionPerformed(evt);
+                bntRemoveAllActionPerformed(evt);
             }
         });
 
@@ -758,7 +759,7 @@ public class FrmBanHang extends javax.swing.JPanel {
                 .addGap(125, 125, 125)
                 .addComponent(btnRemoveOne)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRemoveOne1)
+                .addComponent(bntRemoveAll)
                 .addGap(157, 157, 157))
         );
         jPanel5Layout.setVerticalGroup(
@@ -768,7 +769,7 @@ public class FrmBanHang extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRemoveOne)
-                    .addComponent(btnRemoveOne1)))
+                    .addComponent(bntRemoveAll)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -969,9 +970,13 @@ public class FrmBanHang extends javax.swing.JPanel {
 
         rowCLGioHang = tblGioHang.getSelectedRow();
         if (rowCLGioHang != -1) {
-            JOptionPane.showInputDialog("Nhập số lượng muốn thay đổi")
+            String slText = JOptionPane.showInputDialog("Nhập số lượng muốn thay đổi");
+            slText = tblGioHang.getValueAt(rowCLGioHang, 2).toString();
+            if (validate.validateNullAndisNumber(slText)) {
+
+            }
         }
-        
+
     }//GEN-LAST:event_tblGioHangMouseClicked
 
     private void btnRemoveOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOneActionPerformed
@@ -1046,17 +1051,18 @@ public class FrmBanHang extends javax.swing.JPanel {
             HoaDon hd = hoaDonCho;
             hd.setTongTien(Double.parseDouble(fomartDouble(txtTongTien.getText())));
             hd.setTrangThai(1);
-            hoaDonService.update(hoaDonCho);
-            loadTableHoaDon(getListHoaDonRes());
-            DTMGioHang.setRowCount(0);
-            JOptionPane.showMessageDialog(this, "thanh toan thanh cong");
-            int xuat = JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn", "In hóa đơn", 1);
-            if (xuat == 0) {
-                hoaDonXuat = hoaDonCho;
-                new HoaDonXuat().setVisible(true);
-            }
-            cleanHD();
-            btnThanhToan.setEnabled(false);
+            JOptionPane.showMessageDialog(this, hoaDonCho);
+//            hoaDonService.update(hoaDonCho);
+//            loadTableHoaDon(getListHoaDonRes());
+//            DTMGioHang.setRowCount(0);
+//            JOptionPane.showMessageDialog(this, "thanh toan thanh cong");
+//            int xuat = JOptionPane.showConfirmDialog(this, "Bạn muốn in hóa đơn", "In hóa đơn", 1);
+//            if (xuat == 0) {
+//                hoaDonXuat = hoaDonCho;
+//                new HoaDonXuat().setVisible(true);
+//            }
+//            cleanHD();
+//            btnThanhToan.setEnabled(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1064,18 +1070,24 @@ public class FrmBanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnTaoHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHDActionPerformed
-        int a = getListHoaDonRes().size();
-        String mahd = "hd" + ++a;
+        String mahd = "";
 
+        if (getListHoaDonRes() == null) {
+            mahd = "hd0";
+        } else {
+            int a = getListHoaDonRes().size();
+            mahd = "hd" + ++a;
+        }
         HoaDon hoadonTemp = new HoaDon(null, mahd, DangNhap.ndLogin, null, null, 0, new Date(), null, 0);
         try {
             hoaDonService.save(hoadonTemp);
             JOptionPane.showMessageDialog(this, "Tạo hóa đơn mới thành công");
             loadTableHoaDon(getListHoaDonRes());
-            tblHoaDon.setRowSelectionInterval(0, 0);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        tblHoaDon.getSelectionModel().setSelectionInterval(0, 0);
+//        tblHoaDon.setSelectionModel(ListSelectionModel.SINGLE_SELECTION);
     }//GEN-LAST:event_btnTaoHDActionPerformed
 
     private void txtTienKhachDuaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienKhachDuaCaretUpdate
@@ -1107,9 +1119,33 @@ public class FrmBanHang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_chkApMaVoucherActionPerformed
 
-    private void btnRemoveOne1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOne1ActionPerformed
+    private void bntRemoveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRemoveAllActionPerformed
+        int rowCount = tblGioHang.getRowCount();
+        if (rowCount == 0) {
+            JOptionPane.showMessageDialog(this, "Giỏ hàng đang trống");
+        } else {
+            if (hoaDonCTService.getListRes() != null) {
 
-    }//GEN-LAST:event_btnRemoveOne1ActionPerformed
+                for (ViewHoaDonCTResponse x : hoaDonCTService.getListRes()) {
+
+                    String id = x.getIdHDCT();
+                    try {
+                        hoaDonCTService.delete(id);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            } else {
+                DTMGioHang.setRowCount(0);
+            }
+            if (getListGioHangResByHoaDonCho() == null) {
+                DTMGioHang.setRowCount(0);
+            } else {
+                loadTableHoaDonCTfromDB(getListGioHangResByHoaDonCho());
+
+            }
+    }//GEN-LAST:event_bntRemoveAllActionPerformed
 
     private void txtTongTienCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTongTienCaretUpdate
         if (!txtTongTien.getText().isEmpty()) {
@@ -1170,11 +1206,11 @@ public class FrmBanHang extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntRemoveAll;
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnHuyHD;
     private javax.swing.JButton btnRefrest;
     private javax.swing.JButton btnRemoveOne;
-    private javax.swing.JButton btnRemoveOne1;
     private javax.swing.JButton btnTaoHD;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThayDoi;
